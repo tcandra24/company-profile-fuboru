@@ -92,9 +92,10 @@
         <div>
           <ul class="flex flex-col gap-3 font-bold">
             <li class="mb-3 text-lg font-extrabold text-black dark:text-white">Information</li>
-            <li>164 Brighton Ave, Allston, Maine, U.S. - 02134</li>
+            <li>Jl Raya Trosobo Komplek Industri Kav. III-V, Taman, Sidoarjo Jawa Timur, Indonesia</li>
             <li>
-              <a href="tel:+(617) 254-2333" class="inline-block transition hover:scale-110 hover:text-secondary">+(617) 254-2333</a>
+              <a href="tel:+6231-8971669" class="inline-block transition hover:scale-110 hover:text-secondary">+6231-8971669 / 8970602</a>
+              <a href="tel:+62811-1111-1983" class="inline-block transition hover:scale-110 hover:text-secondary">+62811-1111-1983 (Whatsapp)</a>
             </li>
           </ul>
         </div>
@@ -102,15 +103,12 @@
     </div>
     <div class="bg-gradient-to-r from-[#FCF1F4] to-[#EDFBF9] py-5 dark:border-t-2 dark:border-white/5 dark:bg-none">
       <div class="container">
-        <div class="flex flex-col items-center justify-between text-center font-bold dark:text-white md:flex-row">
+        <div class="text-center font-bold dark:text-white">
           <div>
             Copyright© {{ new Date().getFullYear() }}
-            <a href="javascript:" class="text-primary transition hover:text-secondary">Plurk Technologies Pvt. Ltd.</a>
+            <a href="javascript:" class="text-primary transition hover:text-secondary">PT Fuboru Indonesia</a>
           </div>
-          <div>
-            Need help? Visit the
-            <router-link to="/" class="text-secondary transition hover:text-primary">Contact Us</router-link>
-          </div>
+          <div></div>
         </div>
       </div>
     </div>

@@ -1,11 +1,99 @@
 <script setup>
   import { ref } from 'vue';
   import Testimonial from '@/components/Testimonial.vue';
-  import Counter from '@/components/Counter.vue';
+  import Faq from '@/components/Faq.vue';
   import { useAppStore } from '@/stores/index';
   const store = useAppStore();
 
   const activeTab = ref('all');
+
+  const products = [
+    {
+      group: 'Gasket',
+      slug: 'gasket',
+      list: [
+        {
+          name: 'Gasket Racing',
+          description: 'From Racing To Street Performance',
+          image: '/assets/images/products/gasket-4.jpg',
+          group: 'gasket',
+        },
+        {
+          name: 'Gasket Kendaraan',
+          description: 'Roda 2 / Roda 3',
+          image: '/assets/images/products/gasket-1.jpg',
+          group: 'gasket',
+        },
+      ],
+    },
+    {
+      group: 'Rubber',
+      slug: 'rubber',
+      list: [
+        {
+          name: 'Karet kopling House',
+          description: 'KKH',
+          image: '/assets/images/products/rubber-1.jpg',
+          group: 'rubber',
+        },
+        {
+          name: 'Oil Seal & Seal Dust',
+          description: 'SKO',
+          image: '/assets/images/products/rubber-2.jpg',
+          group: 'rubber',
+        },
+      ],
+    },
+    {
+      group: 'Sparepart',
+      slug: 'sparepart',
+      list: [
+        {
+          name: 'Brake Shoes',
+          description: 'Kampas Rem Tromol',
+          image: '/assets/images/products/spare-3.png',
+          group: 'sparepart',
+        },
+        {
+          name: 'Brake Pads',
+          description: 'Kampas Rem Cakram',
+          image: '/assets/images/products/spare-4.png',
+          group: 'sparepart',
+        },
+      ],
+    },
+  ];
+
+  const mappingProduct = products.map((element) => element.list);
+  const productItem = [].concat(...mappingProduct);
+
+  const certificates = [
+    {
+      name: 'Q-SEAL',
+      description: 'Standard Proses Manufaktur Untuk Produk Gasket & Rubber Parts',
+      image: '/assets/images/certificates/team-1.jpg',
+    },
+    {
+      name: 'MAGNETIC PATENT',
+      description: 'Patent Indonesia Untuk Produk Fuel Filter',
+      image: '/assets/images/certificates/team-2.jpg',
+    },
+    {
+      name: 'AUSTRALIAN PATENT - BRAKE SYSTEM',
+      description: 'Patent Australia Untuk Produk Brake System',
+      image: '/assets/images/certificates/team-3.jpg',
+    },
+    {
+      name: 'EUROPE PATENT - BRAKE SYSTEM',
+      description: 'Patent Eropa Untuk Produk Brake System',
+      image: '/assets/images/certificates/team-4.jpg',
+    },
+    {
+      name: 'AMERICAN PATENT - BRAKE SYSTEM',
+      description: 'Patent Amerika Untuk Produk Brake System',
+      image: '/assets/images/certificates/team-5.jpg',
+    },
+  ];
 </script>
 
 <template>
@@ -30,161 +118,47 @@
               data-aos-offset="0"
               data-aos-delay="300"
             >
-              <img src="/assets/images/fuboru-logo-banner.png" alt="home-banner-icon" class="rtl:rotate-y-180" />
+              <img src="/assets/images/fuboru-logo-banner.webp" alt="home-banner-icon" class="rtl:rotate-y-180" />
             </div>
           </div>
         </div>
       </div>
     </div>
 
-    <section class="bg-[url(/assets/images/service-bg.png)] bg-cover bg-center bg-no-repeat py-14 dark:bg-none lg:py-[100px]">
+    <section class="py-10 lg:py-20 aos-init aos-animate" data-aos="fade-up" data-aos-duration="1000">
       <div class="container">
-        <div class="heading text-center">
-          <h6>High - Impact Services</h6>
-          <h4>We help Brands with</h4>
-        </div>
-        <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          <div data-aos="fade-up" data-aos-duration="1000">
-            <div
-              class="group rounded-3xl border-2 border-white bg-white p-6 shadow-[-20px_30px_70px_rgba(219,222,225,0.4)] transition duration-500 hover:border-secondary hover:bg-secondary/20 dark:border-white/10 dark:bg-transparent dark:bg-gradient-to-b dark:from-white/[0.04] dark:to-transparent dark:!shadow-none dark:hover:bg-secondary"
-            >
-              <div
-                class="flex h-14 w-14 items-center justify-center rounded-full bg-secondary shadow-[0px_15px_30px_rgba(180,118,229,0.4)] transition group-hover:bg-black"
-              >
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path
-                    opacity="0.5"
-                    d="M14.2371 18.7087L18.7103 14.2366L21.4893 17.0156V21.4888H17.0172L14.2371 18.7087ZM5.2917 9.76334L2.3092 6.7819C2.21118 6.68399 2.13342 6.56771 2.08036 6.43973C2.02731 6.31174 2 6.17455 2 6.03601C2 5.89746 2.02731 5.76027 2.08036 5.63229C2.13342 5.5043 2.21118 5.38803 2.3092 5.29012L5.2917 2.30867C5.4894 2.11103 5.75751 2 6.03706 2C6.31662 2 6.58472 2.11103 6.78242 2.30867L9.76598 5.29012L5.2917 9.76334Z"
-                    fill="white"
-                  />
-                  <path
-                    d="M5.29177 12.7459L7.21895 14.6742L8.71179 13.1813L6.78249 11.2552L8.27321 9.76449L10.2015 11.6917L11.6922 10.201L9.76605 8.27271L11.2568 6.78199L13.1818 8.71128L14.6736 7.2195L12.7454 5.29232L15.7279 2.31087C15.9256 2.11323 16.1937 2.0022 16.4732 2.0022C16.7528 2.0022 17.0209 2.11323 17.2186 2.31087L21.6908 6.78304C21.8884 6.98074 21.9994 7.24885 21.9994 7.5284C21.9994 7.80795 21.8884 8.07606 21.6908 8.27376L8.27321 21.6913C8.07551 21.889 7.8074 22 7.52785 22C7.2483 22 6.98019 21.889 6.78249 21.6913L2.31032 17.2192C2.11268 17.0215 2.00165 16.7533 2.00165 16.4738C2.00165 16.1942 2.11268 15.9261 2.31032 15.7284L5.29177 12.7459Z"
-                    fill="white"
-                  />
-                </svg>
-              </div>
-              <router-link to="/" class="my-8 inline-block text-[22px] font-extrabold text-black dark:text-white dark:group-hover:text-black"
-                >UI/UX Design
-              </router-link>
-              <p class="mb-10 text-lg font-semibold transition line-clamp-3 dark:group-hover:text-black">
-                We provide services with the best designs than our designer team for your business.
-              </p>
-              <router-link
-                to="/"
-                class="flex h-11 w-11 items-center justify-center rounded-full bg-[#F3F4F6] transition group-hover:bg-black rtl:rotate-180 dark:bg-gray-dark"
-              >
-                <svg
-                  width="20"
-                  height="20"
-                  viewBox="0 0 20 20"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                  class="text-black transition group-hover:text-white dark:text-white"
-                >
-                  <path
-                    d="M9.41083 14.4109L10.5892 15.5892L16.1783 10.0001L10.5892 4.41089L9.41083 5.58922L12.9883 9.16672H5V10.8334H12.9883L9.41083 14.4109Z"
-                    fill="currentColor"
-                  />
-                </svg>
-              </router-link>
-            </div>
+        <div class="flex flex-col gap-7 lg:flex-row">
+          <div
+            class="mx-auto h-[450px] w-full max-w-[380px] flex-none overflow-hidden rounded-b-[160px] rounded-tl-[200px] rounded-tr-[20px] border-[10px] border-white dark:border-gray-dark"
+          >
+            <img src="/assets/images/about_img.webp" alt="" class="h-full w-full object-cover" />
           </div>
-          <div data-aos="fade-up" data-aos-duration="1000">
-            <div
-              class="group rounded-3xl border-2 border-white bg-white p-6 shadow-[-20px_30px_70px_rgba(219,222,225,0.4)] transition duration-500 hover:border-secondary hover:bg-secondary/20 dark:border-white/10 dark:bg-transparent dark:bg-gradient-to-b dark:from-white/[0.04] dark:to-transparent dark:!shadow-none dark:hover:bg-secondary"
-            >
-              <div
-                class="flex h-14 w-14 items-center justify-center rounded-full bg-secondary shadow-[0px_15px_30px_rgba(180,118,229,0.4)] transition group-hover:bg-black"
-              >
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path
-                    opacity="0.5"
-                    d="M10.1658 20C10.5862 20 10.9617 19.7371 11.1054 19.342L15.8374 6.34204C16.0749 5.68981 15.5919 5 14.8978 5H13.8341C13.4137 5 13.0382 5.26292 12.8945 5.65796L8.16245 18.658C7.92504 19.3102 8.40804 20 9.10214 20H10.1658Z"
-                    fill="white"
-                  />
-                  <path
-                    d="M17.9889 17.0964C18.3794 17.4871 19.0127 17.4873 19.4034 17.0966L23.2929 13.2071C23.6834 12.8166 23.6834 12.1834 23.2929 11.7929L19.4036 7.90359C19.0129 7.51287 18.3793 7.5131 17.9889 7.90409L17.2814 8.61254C16.8913 9.00328 16.8916 9.63632 17.2823 10.0266L19.0501 11.7927C19.441 12.1832 19.441 12.8168 19.0502 13.2074L17.2822 14.9746C16.8916 15.365 16.8914 15.9981 17.2818 16.3888L17.9889 17.0964ZM4.94994 13.2073C4.55904 12.8167 4.55896 12.1832 4.94977 11.7925L6.71781 10.0253C7.10839 9.63494 7.10858 9.00184 6.71823 8.61121L6.01111 7.90359C5.62062 7.51283 4.98726 7.51272 4.59664 7.90334L0.707106 11.7929C0.316582 12.1834 0.316582 12.8166 0.707107 13.2071L4.59639 17.0964C4.98711 17.4871 5.62066 17.4869 6.01111 17.0959L6.71856 16.3874C7.10874 15.9967 7.10837 15.3637 6.71773 14.9734L4.94994 13.2073Z"
-                    fill="white"
-                  />
-                </svg>
-              </div>
-              <router-link to="/" class="my-8 inline-block text-[22px] font-extrabold text-black dark:text-white dark:group-hover:text-black"
-                >Web Development
-              </router-link>
-              <p class="mb-10 text-lg font-semibold transition line-clamp-3 dark:group-hover:text-black">
-                We help develop company websites to be more professional and attractive
+          <div class="flex flex-1 flex-col justify-between text-center ltr:md:text-left rtl:md:text-right">
+            <div>
+              <h2 class="mb-4 text-2xl font-extrabold text-black dark:text-white md:text-3xl lg:text-[40px] lg:leading-tight">
+                Tentang <span class="text-primary">Fuboru</span>
+              </h2>
+              <p class="mb-5 lg:text-lg">
+                PT Fuboru Indonesia didirikan pada tahun 1983 yang berarti sudah eksis selama hampir 40 tahun dalam industri suku cadang otomotif. Boleh
+                dikatakan kami adalah pionir dalam industri stamping gasket di Indonesia. Saat ini kami memiliki range produk meliputi suku cadang otomotif
+                untuk roda 2, roda 3 , roda 4, suku cadang mesin statis dan Job Order.
               </p>
-              <router-link
-                to="/"
-                class="flex h-11 w-11 items-center justify-center rounded-full bg-[#F3F4F6] transition group-hover:bg-black rtl:rotate-180 dark:bg-gray-dark"
-              >
-                <svg
-                  width="20"
-                  height="20"
-                  viewBox="0 0 20 20"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                  class="text-black transition group-hover:text-white dark:text-white"
-                >
-                  <path
-                    d="M9.41083 14.4109L10.5892 15.5892L16.1783 10.0001L10.5892 4.41089L9.41083 5.58922L12.9883 9.16672H5V10.8334H12.9883L9.41083 14.4109Z"
-                    fill="currentColor"
-                  />
-                </svg>
-              </router-link>
-            </div>
-          </div>
-          <div data-aos="fade-up" data-aos-duration="1000">
-            <div
-              class="group rounded-3xl border-2 border-white bg-white p-6 shadow-[-20px_30px_70px_rgba(219,222,225,0.4)] transition duration-500 hover:border-secondary hover:bg-secondary/20 dark:border-white/10 dark:bg-transparent dark:bg-gradient-to-b dark:from-white/[0.04] dark:to-transparent dark:!shadow-none dark:hover:bg-secondary"
-            >
-              <div
-                class="flex h-14 w-14 items-center justify-center rounded-full bg-secondary shadow-[0px_15px_30px_rgba(180,118,229,0.4)] transition group-hover:bg-black"
-              >
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path
-                    opacity="0.5"
-                    d="M6.21053 20H3.05263C2.77346 20 2.50572 19.8891 2.30831 19.6917C2.1109 19.4943 2 19.2265 2 18.9474V10.5263C2 10.2471 2.1109 9.97941 2.30831 9.782C2.50572 9.58459 2.77346 9.47369 3.05263 9.47369H6.21053C6.4897 9.47369 6.75744 9.58459 6.95485 9.782C7.15226 9.97941 7.26316 10.2471 7.26316 10.5263V18.9474C7.26316 19.2265 7.15226 19.4943 6.95485 19.6917C6.75744 19.8891 6.4897 20 6.21053 20ZM20.9474 20H17.7895C17.5103 20 17.2426 19.8891 17.0452 19.6917C16.8477 19.4943 16.7368 19.2265 16.7368 18.9474V7.36843C16.7368 7.08925 16.8477 6.82151 17.0452 6.6241C17.2426 6.4267 17.5103 6.3158 17.7895 6.3158H20.9474C21.2265 6.3158 21.4943 6.4267 21.6917 6.6241C21.8891 6.82151 22 7.08925 22 7.36843V18.9474C22 19.2265 21.8891 19.4943 21.6917 19.6917C21.4943 19.8891 21.2265 20 20.9474 20Z"
-                    fill="white"
-                  />
-                  <path
-                    d="M13.5789 20H10.421C10.1419 20 9.87412 19.8891 9.67672 19.6917C9.47931 19.4943 9.36841 19.2265 9.36841 18.9474V1.05263C9.36841 0.773456 9.47931 0.505715 9.67672 0.308309C9.87412 0.110902 10.1419 0 10.421 0H13.5789C13.8581 0 14.1259 0.110902 14.3233 0.308309C14.5207 0.505715 14.6316 0.773456 14.6316 1.05263V18.9474C14.6316 19.2265 14.5207 19.4943 14.3233 19.6917C14.1259 19.8891 13.8581 20 13.5789 20Z"
-                    fill="white"
-                  />
-                </svg>
-              </div>
-              <router-link to="/" class="my-8 inline-block text-[22px] font-extrabold text-black dark:text-white dark:group-hover:text-black"
-                >Digital Marketing
-              </router-link>
-              <p class="mb-10 text-lg font-semibold transition line-clamp-3 dark:group-hover:text-black">
-                We also help you market your products through an online marketplace.
+              <p class="mb-5 lg:text-lg">
+                Pengembangan demi pengembangan dilakukan agar VISI kami untuk Menjadi 10 besar industri suku cadang otomotif dapat tercapai. Adapun MISI kami
+                adalah Senantiasa memberikan pelayanan terbaik bagi customer baik internal maupun eksternal.
               </p>
-              <router-link
-                to="/"
-                class="flex h-11 w-11 items-center justify-center rounded-full bg-[#F3F4F6] transition group-hover:bg-black rtl:rotate-180 dark:bg-gray-dark"
-              >
-                <svg
-                  width="20"
-                  height="20"
-                  viewBox="0 0 20 20"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                  class="text-black transition group-hover:text-white dark:text-white"
-                >
-                  <path
-                    d="M9.41083 14.4109L10.5892 15.5892L16.1783 10.0001L10.5892 4.41089L9.41083 5.58922L12.9883 9.16672H5V10.8334H12.9883L9.41083 14.4109Z"
-                    fill="currentColor"
-                  />
-                </svg>
-              </router-link>
+              <p class="lg:text-lg">
+                Peningkatan kualitas produk selalu dilakukan melalui inovasi dan pengembangan teknologi, karena bagi kami, kualitas adalah prioritas. Usaha
+                menjaga kualitas dilakukan dengan melakukan in process control, mulai dari seleksi bahan baku, pengendalian proses produksi, hingga penyimpanan
+                barang jadi. Semua kami lakukan demi kepuasan pelanggan, karena kami selalu ingin memberi yang terbaik
+              </p>
             </div>
           </div>
         </div>
       </div>
     </section>
-    <section class="py-14 dark:!bg-none lg:py-[100px]" style="background: linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, #ffffff 54.69%)">
-      <counter></counter>
 
+    <section class="py-14 dark:!bg-none lg:py-[100px]" style="background: linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, #ffffff 54.69%)">
       <div
         class="relative my-14 mx-auto border-[10px] border-transparent bg-black py-14 dark:border-black dark:bg-gray-dark lg:my-[100px] lg:py-[100px] xl:max-w-[1440px] xl:rounded-3xl"
       >
@@ -366,117 +340,35 @@
         </div>
       </div>
       <div class="container">
-        <div class="flex flex-col items-center justify-center lg:flex-row lg:justify-between">
-          <div class="heading text-center ltr:lg:text-left rtl:lg:text-right">
-            <h6>Our Project</h6>
-            <h4>Some of our finest work.</h4>
-          </div>
-          <!-- <div class="flex items-center justify-end gap-4">
-                          <div class="text-sm font-extrabold text-black dark:text-white">View All</div>
-                          <button type="button" class="bg-black/5 dark:bg-white/5 w-10 h-10 rounded-full flex items-center justify-center hover:bg-secondary dark:hover:bg-secondary transition">
-                              <svg width="7" height="12" viewBox="0 0 7 12" fill="none" xmlns="http://www.w3.org/2000/svg" class="text-black dark:text-white">
-                                  <path d="M5.95007 1.2002L1.48924 5.3424C1.06317 5.73803 1.06317 6.41236 1.48924 6.80799L5.95007 10.9502" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-                              </svg>
-                          </button>
-                          <button type="button" class="bg-black/5 dark:bg-white/5 text-p w-10 h-10 rounded-full flex items-center justify-center hover:bg-secondary dark:hover:bg-secondary transition">
-                              <svg width="7" height="12" viewBox="0 0 7 12" fill="none" xmlns="http://www.w3.org/2000/svg" class="text-black dark:text-white">
-                                  <path d="M1.05005 10.7998L5.51089 6.6576C5.93695 6.26197 5.93695 5.58764 5.51089 5.19201L1.05005 1.0498" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-                              </svg>
-                          </button>
-                      </div> -->
+        <div class="heading text-center">
+          <h4>Produk</h4>
+          <h6>Lebih dari 1000 item produk berkualitas untuk mendukung performance kendaraan anda</h6>
         </div>
         <div class="mb-7">
           <ul class="filters home-filter mt-10 flex gap-8 overflow-x-auto whitespace-nowrap pb-3 font-bold lg:mt-0 lg:gap-10">
             <li class="filter" :class="{ active: activeTab === 'all' }">
-              <button type="button" class="transition hover:text-secondary" @click="activeTab = 'all'">All Work</button>
+              <button type="button" class="transition hover:text-secondary" @click="activeTab = 'all'">All</button>
             </li>
-            <li class="filter" :class="{ active: activeTab === 'design' }">
-              <button type="button" class="transition hover:text-secondary" @click="activeTab = 'design'">Design</button>
-            </li>
-            <li class="filter" :class="{ active: activeTab === 'website' }">
-              <button type="button" class="transition hover:text-secondary" @click="activeTab = 'website'">Website</button>
-            </li>
-            <li class="filter" :class="{ active: activeTab === 'app' }">
-              <button type="button" class="transition hover:text-secondary" @click="activeTab = 'app'">Mobile App</button>
-            </li>
-            <li class="filter" :class="{ active: activeTab === 'web' }">
-              <button type="button" class="transition hover:text-secondary" @click="activeTab = 'web'">Web Application</button>
-            </li>
-            <li class="filter" :class="{ active: activeTab === 'ecommerce' }">
-              <button type="button" class="transition hover:text-secondary" @click="activeTab = 'ecommerce'">Ecommerce</button>
+            <li class="filter" v-for="(product, index) in products" :key="index" :class="{ active: activeTab === product.slug }">
+              <button type="button" class="transition hover:text-secondary" @click="activeTab = product.slug">{{ product.group }}</button>
             </li>
           </ul>
         </div>
         <div class="projects grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
-          <div class="project" :class="activeTab === 'all' || activeTab === 'web' ? 'block' : 'hidden'">
+          <div
+            class="project"
+            v-for="(product, index) in productItem"
+            :key="index"
+            :class="activeTab === 'all' || activeTab === product.group ? 'block' : 'hidden'"
+          >
             <div
               class="relative rounded-3xl border border-transparent bg-white drop-shadow-[5px_10px_80px_rgba(119,128,161,0.15)] transition duration-500 hover:border-secondary hover:bg-secondary/20 dark:bg-gray-dark dark:drop-shadow-none"
             >
               <router-link to="/" class="absolute top-0 left-0 h-full w-full"></router-link>
-              <img src="/assets/images/project-1.png" alt="project-1" class="h-52 w-full rounded-t-3xl object-cover" />
+              <img :src="product.image" alt="project-1" class="h-52 w-full rounded-t-3xl object-cover" />
               <div class="p-5 text-sm font-bold">
-                <h6 class="mb-1 text-black dark:text-white">Space Landing page</h6>
-                <p>Website</p>
-              </div>
-            </div>
-          </div>
-          <div class="project" :class="activeTab === 'all' || activeTab === 'ecommerce' ? 'block' : 'hidden'">
-            <div
-              class="relative rounded-3xl border border-transparent bg-white drop-shadow-[5px_10px_80px_rgba(119,128,161,0.15)] transition duration-500 hover:border-secondary hover:bg-secondary/20 dark:bg-gray-dark dark:drop-shadow-none"
-            >
-              <router-link to="/" class="absolute top-0 left-0 h-full w-full"></router-link>
-              <img src="/assets/images/project-2.png" alt="project-2" class="h-52 w-full rounded-t-3xl object-cover" />
-              <div class="p-5 text-sm font-bold">
-                <h6 class="mb-1 text-black dark:text-white">Crypto Game - UX Interface</h6>
-                <p>Website, App</p>
-              </div>
-            </div>
-          </div>
-          <div class="project" :class="activeTab === 'all' || activeTab === 'app' ? 'block' : 'hidden'">
-            <div
-              class="relative rounded-3xl border border-transparent bg-white drop-shadow-[5px_10px_80px_rgba(119,128,161,0.15)] transition duration-500 hover:border-secondary hover:bg-secondary/20 dark:bg-gray-dark dark:drop-shadow-none"
-            >
-              <router-link to="/" class="absolute top-0 left-0 h-full w-full"></router-link>
-              <img src="/assets/images/project-3.png" alt="project-3" class="h-52 w-full rounded-t-3xl object-cover" />
-              <div class="p-5 text-sm font-bold">
-                <h6 class="mb-1 text-black dark:text-white">Looking for a quiet place</h6>
-                <p>Website</p>
-              </div>
-            </div>
-          </div>
-          <div class="project" :class="activeTab === 'all' || activeTab === 'design' ? 'block' : 'hidden'">
-            <div
-              class="relative rounded-3xl border border-transparent bg-white drop-shadow-[5px_10px_80px_rgba(119,128,161,0.15)] transition duration-500 hover:border-secondary hover:bg-secondary/20 dark:bg-gray-dark dark:drop-shadow-none"
-            >
-              <router-link to="/" class="absolute top-0 left-0 h-full w-full"></router-link>
-              <img src="/assets/images/project-4.png" alt="project-4" class="h-52 w-full rounded-t-3xl object-cover" />
-              <div class="p-5 text-sm font-bold">
-                <h6 class="mb-1 text-black dark:text-white">WeTour - Travel Hero Illustration</h6>
-                <p>Website</p>
-              </div>
-            </div>
-          </div>
-          <div class="project" :class="activeTab === 'all' || activeTab === 'website' ? 'block' : 'hidden'">
-            <div
-              class="relative rounded-3xl border border-transparent bg-white drop-shadow-[5px_10px_80px_rgba(119,128,161,0.15)] transition duration-500 hover:border-secondary hover:bg-secondary/20 dark:bg-gray-dark dark:drop-shadow-none"
-            >
-              <router-link to="/" class="absolute top-0 left-0 h-full w-full"></router-link>
-              <img src="/assets/images/project-5.png" alt="project-5" class="h-52 w-full rounded-t-3xl object-cover" />
-              <div class="p-5 text-sm font-bold">
-                <h6 class="mb-1 text-black dark:text-white">Digital Art Guide</h6>
-                <p>Branding</p>
-              </div>
-            </div>
-          </div>
-          <div class="project" :class="activeTab === 'all' || activeTab === 'app' ? 'block' : 'hidden'">
-            <div
-              class="relative rounded-3xl border border-transparent bg-white drop-shadow-[5px_10px_80px_rgba(119,128,161,0.15)] transition duration-500 hover:border-secondary hover:bg-secondary/20 dark:bg-gray-dark dark:drop-shadow-none"
-            >
-              <router-link to="/" class="absolute top-0 left-0 h-full w-full"></router-link>
-              <img src="/assets/images/project-6.png" alt="project-6" class="h-52 w-full rounded-t-3xl object-cover" />
-              <div class="p-5 text-sm font-bold">
-                <h6 class="mb-1 text-black dark:text-white">Frozeverse - 3D and motion design</h6>
-                <p>Branding, Website, App</p>
+                <h6 class="mb-1 text-black dark:text-white">{{ product.name }}</h6>
+                <p>{{ product.description }}</p>
               </div>
             </div>
           </div>
@@ -487,325 +379,25 @@
     <section class="bg-[url(/assets/images/team-bg.png)] bg-cover bg-center bg-no-repeat py-14 dark:bg-black/50 lg:py-[100px]">
       <div class="container">
         <div class="heading text-center">
-          <h6>Meet Our Team</h6>
-          <h4>Creative Minds</h4>
+          <h4>Jaminan Kualitas</h4>
+          <h6>Jaminan kualitas fuboru tercermin dari beberapa sertifikasi & patent yang kami peroleh, baik lokal maupun International Patent</h6>
         </div>
-        <div class="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
-          <div class="group cursor-pointer text-center">
+        <div class="grid gap-8 sm:grid-cols-3 lg:grid-cols-5">
+          <div class="group cursor-pointer text-center" v-for="(certificate, index) in certificates" :key="index">
             <div class="relative h-[280px] rounded-3xl transition-all duration-500 group-hover:shadow-[0_0_25px_#979797]">
-              <img src="/assets/images/team-member-1.png" alt="team-member-1" class="h-full w-full rounded-3xl object-cover object-top" />
+              <img :src="certificate.image" :alt="certificate.name" class="h-full w-full rounded-3xl object-cover object-top" />
             </div>
-            <h4 class="pt-5 pb-2 text-xl font-extrabold text-black transition duration-500 group-hover:text-secondary dark:text-white">Aditya Patel</h4>
-            <h6 class="text-sm font-bold">Chief Executive Officer</h6>
-          </div>
-          <div class="group cursor-pointer text-center">
-            <div class="relative h-[280px] rounded-3xl transition-all duration-500 group-hover:shadow-[0_0_25px_#979797]">
-              <img src="/assets/images/team-member-2.png" alt="team-member-2" class="h-full w-full rounded-3xl object-cover object-top" />
-            </div>
-            <h4 class="pt-5 pb-2 text-xl font-extrabold text-black transition duration-500 group-hover:text-secondary dark:text-white">Audrey Ramirez</h4>
-            <h6 class="text-sm font-bold">Chief Operating Officer</h6>
-          </div>
-          <div class="group cursor-pointer text-center">
-            <div class="relative h-[280px] rounded-3xl transition-all duration-500 group-hover:shadow-[0_0_25px_#979797]">
-              <img src="/assets/images/team-member-3.png" alt="team-member-3" class="h-full w-full rounded-3xl object-cover object-top" />
-            </div>
-            <h4 class="pt-5 pb-2 text-xl font-extrabold text-black transition duration-500 group-hover:text-secondary dark:text-white">James Robinson</h4>
-            <h6 class="text-sm font-bold">Chief Financial Officer</h6>
-          </div>
-          <div class="group cursor-pointer text-center">
-            <div class="relative h-[280px] rounded-3xl transition-all duration-500 group-hover:shadow-[0_0_25px_#979797]">
-              <img src="/assets/images/team-member-4.png" alt="team-member-4" class="h-full w-full rounded-3xl object-cover object-top" />
-            </div>
-            <h4 class="pt-5 pb-2 text-xl font-extrabold text-black transition duration-500 group-hover:text-secondary dark:text-white">Daniel Allen</h4>
-            <h6 class="text-sm font-bold">Chief Marketing Officer</h6>
+            <h4 class="pt-5 pb-2 text-xl font-extrabold text-black transition duration-500 group-hover:text-secondary dark:text-white">
+              {{ certificate.name }}
+            </h4>
+            <h6 class="text-sm font-bold">{{ certificate.description }}</h6>
           </div>
         </div>
       </div>
     </section>
 
-    <section class="bg-gradient-to-b from-white/60 to-transparent py-14 dark:from-white/[0.02] lg:py-[100px]">
-      <div class="container">
-        <div class="heading text-center">
-          <h6>Pricing Plan</h6>
-          <h4>Choose Affordable Prices</h4>
-        </div>
-        <div class="grid grid-cols-1 gap-[30px] md:grid-cols-2 lg:grid-cols-3">
-          <div
-            class="group flex flex-col rounded-3xl border-2 border-primary bg-white p-6 px-4 transition hover:bg-primary hover:drop-shadow-[-10px_30px_70px_rgba(40,38,77,0.25)] dark:border-white/10 dark:bg-transparent dark:bg-gradient-to-b dark:from-white/[0.01] dark:to-transparent dark:drop-shadow-none dark:hover:border-gray-dark dark:hover:bg-gray-dark sm:px-6"
-            data-aos="fade-up"
-            data-aos-duration="1000"
-          >
-            <div class="mb-8">
-              <h3 class="text-[22px] font-black text-black dark:text-white">Intro</h3>
-            </div>
-            <ul class="space-y-5 pb-7 text-sm font-bold group-hover:text-white">
-              <li class="flex items-center">
-                <div>
-                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <circle cx="8" cy="8" r="8" fill="#45B649" />
-                    <path d="M5.11438 8.11438L7 10L10.7712 6.22876" stroke="white" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" />
-                  </svg>
-                </div>
-                <p class="ltr:pl-3 rtl:pr-3">Daily content updates</p>
-              </li>
-              <li class="flex items-center">
-                <div>
-                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <circle cx="8" cy="8" r="8" fill="#45B649" />
-                    <path d="M5.11438 8.11438L7 10L10.7712 6.22876" stroke="white" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" />
-                  </svg>
-                </div>
-                <p class="ltr:pl-3 rtl:pr-3">Unlimited downloads of FREE resources</p>
-              </li>
-              <li class="flex items-center">
-                <div>
-                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <circle cx="8" cy="8" r="8" fill="#45B649" />
-                    <path d="M5.11438 8.11438L7 10L10.7712 6.22876" stroke="white" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" />
-                  </svg>
-                </div>
-                <p class="ltr:pl-3 rtl:pr-3">Unlimited PREMIUM downloads</p>
-              </li>
-              <li class="flex items-center">
-                <div>
-                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <circle cx="8" cy="8" r="8" fill="#45B649" />
-                    <path d="M5.11438 8.11438L7 10L10.7712 6.22876" stroke="white" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" />
-                  </svg>
-                </div>
-                <p class="ltr:pl-3 rtl:pr-3">Valid commercial licenses</p>
-              </li>
-              <li class="flex items-center">
-                <div>
-                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <g opacity="0.3">
-                      <circle cx="8" cy="8" r="8" fill="#7780A1" />
-                    </g>
-                    <path d="M5.11438 8.11438L7 10L10.7712 6.22876" stroke="white" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" />
-                  </svg>
-                </div>
-                <p class="ltr:pl-3 rtl:pr-3">Advanced Search</p>
-              </li>
-              <li class="flex items-center">
-                <div>
-                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <g opacity="0.3">
-                      <circle cx="8" cy="8" r="8" fill="#7780A1" />
-                    </g>
-                    <path d="M5.11438 8.11438L7 10L10.7712 6.22876" stroke="white" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" />
-                  </svg>
-                </div>
-                <p class="ltr:pl-3 rtl:pr-3">No attribution required</p>
-              </li>
-              <li class="flex items-center">
-                <div>
-                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <g opacity="0.3">
-                      <circle cx="8" cy="8" r="8" fill="#7780A1" />
-                    </g>
-                    <path d="M5.11438 8.11438L7 10L10.7712 6.22876" stroke="white" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" />
-                  </svg>
-                </div>
-                <p class="ltr:pl-3 rtl:pr-3">Browse with no ads</p>
-              </li>
-            </ul>
-            <div class="mt-auto border-t-2 border-[#BBC0D0]/50 pt-7">
-              <div class="mb-3 flex flex-col items-center justify-center sm:flex-row sm:justify-between">
-                <div
-                  class="relative mb-2 text-lg font-extrabold before:absolute before:top-1/2 before:h-2.5 before:w-2.5 before:-translate-y-1/2 before:rounded-full before:bg-primary group-hover:text-white group-hover:before:bg-white ltr:pl-5 ltr:before:left-0 rtl:pr-5 rtl:before:right-0 sm:mb-0"
-                >
-                  Monthly
-                </div>
-                <a href="javascript:" class="btn text-xl text-white group-hover:bg-white group-hover:text-primary dark:text-black xl:w-44"
-                  >$39.99<small class="text-xs lowercase">/month</small></a
-                >
-              </div>
-              <span class="block text-center text-sm font-bold text-black dark:text-white sm:pr-5 ltr:sm:text-right rtl:sm:text-left">Billed every month</span>
-            </div>
-          </div>
-          <div
-            class="group flex flex-col rounded-3xl border-2 border-secondary bg-white p-6 px-4 transition hover:bg-secondary hover:drop-shadow-[-10px_30px_70px_rgba(40,38,77,0.25)] dark:border-white/10 dark:bg-transparent dark:bg-gradient-to-b dark:from-white/[0.01] dark:to-transparent dark:drop-shadow-none dark:hover:border-gray-dark dark:hover:bg-gray-dark sm:px-6"
-            data-aos="fade-up"
-            data-aos-duration="1000"
-          >
-            <div class="relative mb-8">
-              <h3 class="text-[22px] font-black text-black dark:text-white">Base</h3>
-              <div
-                class="group-hover:white/10 absolute top-1/2 -translate-y-1/2 rounded-xl bg-secondary/10 py-2 px-4 text-xs font-black text-secondary group-hover:bg-white group-hover:text-black ltr:right-0 rtl:left-0"
-              >
-                MOST POPULAR
-              </div>
-            </div>
-            <ul class="space-y-5 pb-7 text-sm font-bold group-hover:text-white">
-              <li class="flex items-center">
-                <div>
-                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <circle cx="8" cy="8" r="8" fill="#45B649" />
-                    <path d="M5.11438 8.11438L7 10L10.7712 6.22876" stroke="white" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" />
-                  </svg>
-                </div>
-                <p class="ltr:pl-3 rtl:pr-3">Daily content updates</p>
-              </li>
-              <li class="flex items-center">
-                <div>
-                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <circle cx="8" cy="8" r="8" fill="#45B649" />
-                    <path d="M5.11438 8.11438L7 10L10.7712 6.22876" stroke="white" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" />
-                  </svg>
-                </div>
-                <p class="ltr:pl-3 rtl:pr-3">Unlimited downloads of FREE resources</p>
-              </li>
-              <li class="flex items-center">
-                <div>
-                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <circle cx="8" cy="8" r="8" fill="#45B649" />
-                    <path d="M5.11438 8.11438L7 10L10.7712 6.22876" stroke="white" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" />
-                  </svg>
-                </div>
-                <p class="ltr:pl-3 rtl:pr-3">Unlimited PREMIUM downloads</p>
-              </li>
-              <li class="flex items-center">
-                <div>
-                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <circle cx="8" cy="8" r="8" fill="#45B649" />
-                    <path d="M5.11438 8.11438L7 10L10.7712 6.22876" stroke="white" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" />
-                  </svg>
-                </div>
-                <p class="ltr:pl-3 rtl:pr-3">Valid commercial licenses</p>
-              </li>
-              <li class="flex items-center">
-                <div>
-                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <circle cx="8" cy="8" r="8" fill="#45B649" />
-                    <path d="M5.11438 8.11438L7 10L10.7712 6.22876" stroke="white" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" />
-                  </svg>
-                </div>
-                <p class="ltr:pl-3 rtl:pr-3">Advanced Search</p>
-              </li>
-              <li class="flex items-center">
-                <div>
-                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <circle cx="8" cy="8" r="8" fill="#45B649" />
-                    <path d="M5.11438 8.11438L7 10L10.7712 6.22876" stroke="white" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" />
-                  </svg>
-                </div>
-                <p class="ltr:pl-3 rtl:pr-3">No attribution required</p>
-              </li>
-              <li class="flex items-center">
-                <div>
-                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <circle cx="8" cy="8" r="8" fill="#45B649" />
-                    <path d="M5.11438 8.11438L7 10L10.7712 6.22876" stroke="white" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" />
-                  </svg>
-                </div>
-                <p class="ltr:pl-3 rtl:pr-3">Browse with no ads</p>
-              </li>
-            </ul>
-            <div class="mt-auto border-t-2 border-[#BBC0D0]/50 pt-7">
-              <div class="mb-3 flex flex-col items-center justify-center sm:flex-row sm:justify-between">
-                <div
-                  class="relative mb-2 text-lg font-extrabold before:absolute before:top-1/2 before:h-2.5 before:w-2.5 before:-translate-y-1/2 before:rounded-full before:bg-secondary group-hover:text-white group-hover:before:bg-white ltr:pl-5 ltr:before:left-0 rtl:pr-5 rtl:before:right-0 sm:mb-0"
-                >
-                  Yearly
-                </div>
-                <a href="javascript:" class="btn bg-secondary text-xl text-white group-hover:bg-white group-hover:text-secondary dark:text-black xl:w-44"
-                  >$14.99<small class="text-xs lowercase">/month</small></a
-                >
-              </div>
-              <span class="block text-center text-sm font-bold text-black dark:text-white sm:pr-5 ltr:sm:text-right rtl:sm:text-left"
-                >$179.00 every 12 months</span
-              >
-            </div>
-          </div>
-          <div
-            class="group flex flex-col rounded-3xl border-2 border-black bg-white p-6 px-4 transition hover:bg-black hover:drop-shadow-[-10px_30px_70px_rgba(40,38,77,0.25)] dark:border-white/10 dark:bg-transparent dark:bg-gradient-to-b dark:from-white/[0.01] dark:to-transparent dark:drop-shadow-none dark:hover:border-gray-dark dark:hover:bg-gray-dark sm:px-6"
-            data-aos="fade-up"
-            data-aos-duration="1000"
-          >
-            <div class="mb-8">
-              <h3 class="text-[22px] font-black text-black group-hover:text-white dark:text-white">Pro</h3>
-            </div>
-            <ul class="space-y-5 pb-7 text-sm font-bold group-hover:text-white">
-              <li class="flex items-center">
-                <div>
-                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <circle cx="8" cy="8" r="8" fill="#45B649" />
-                    <path d="M5.11438 8.11438L7 10L10.7712 6.22876" stroke="white" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" />
-                  </svg>
-                </div>
-                <p class="ltr:pl-3 rtl:pr-3">Daily content updates</p>
-              </li>
-              <li class="flex items-center">
-                <div>
-                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <circle cx="8" cy="8" r="8" fill="#45B649" />
-                    <path d="M5.11438 8.11438L7 10L10.7712 6.22876" stroke="white" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" />
-                  </svg>
-                </div>
-                <p class="ltr:pl-3 rtl:pr-3">Unlimited downloads of FREE resources</p>
-              </li>
-              <li class="flex items-center">
-                <div>
-                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <circle cx="8" cy="8" r="8" fill="#45B649" />
-                    <path d="M5.11438 8.11438L7 10L10.7712 6.22876" stroke="white" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" />
-                  </svg>
-                </div>
-                <p class="ltr:pl-3 rtl:pr-3">Unlimited PREMIUM downloads</p>
-              </li>
-              <li class="flex items-center">
-                <div>
-                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <circle cx="8" cy="8" r="8" fill="#45B649" />
-                    <path d="M5.11438 8.11438L7 10L10.7712 6.22876" stroke="white" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" />
-                  </svg>
-                </div>
-                <p class="ltr:pl-3 rtl:pr-3">Valid commercial licenses</p>
-              </li>
-              <li class="flex items-center">
-                <div>
-                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <circle cx="8" cy="8" r="8" fill="#45B649" />
-                    <path d="M5.11438 8.11438L7 10L10.7712 6.22876" stroke="white" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" />
-                  </svg>
-                </div>
-                <p class="ltr:pl-3 rtl:pr-3">Advanced Search</p>
-              </li>
-              <li class="flex items-center">
-                <div>
-                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <circle cx="8" cy="8" r="8" fill="#45B649" />
-                    <path d="M5.11438 8.11438L7 10L10.7712 6.22876" stroke="white" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" />
-                  </svg>
-                </div>
-                <p class="ltr:pl-3 rtl:pr-3">No attribution required</p>
-              </li>
-              <li class="flex items-center">
-                <div>
-                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <circle cx="8" cy="8" r="8" fill="#45B649" />
-                    <path d="M5.11438 8.11438L7 10L10.7712 6.22876" stroke="white" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" />
-                  </svg>
-                </div>
-                <p class="ltr:pl-3 rtl:pr-3">Browse with no ads</p>
-              </li>
-            </ul>
-            <div class="mt-auto border-t-2 border-[#BBC0D0]/50 pt-7">
-              <div class="mb-3 flex flex-col items-center justify-center sm:flex-row sm:justify-between">
-                <div
-                  class="relative mb-2 text-lg font-extrabold before:absolute before:top-1/2 before:h-2.5 before:w-2.5 before:-translate-y-1/2 before:rounded-full before:bg-black group-hover:text-gray group-hover:before:bg-white ltr:pl-5 ltr:before:left-0 rtl:pr-5 rtl:before:right-0 sm:mb-0"
-                >
-                  Yearly
-                </div>
-                <a href="javascript:" class="btn bg-black text-xl text-white group-hover:bg-white group-hover:text-black xl:w-44">$499</a>
-              </div>
-              <span class="block text-center text-sm font-bold text-black group-hover:text-white dark:text-white sm:pr-5 ltr:sm:text-right rtl:sm:text-left"
-                >Billed once only</span
-              >
-            </div>
-          </div>
-        </div>
-      </div>
+    <section class="bg-gradient-to-t from-white/[55%] to-transparent py-14 dark:bg-white/[0.02] dark:from-transparent lg:py-[100px]">
+      <faq></faq>
     </section>
 
     <Testimonial class="py-14 lg:py-[100px]"></Testimonial>
