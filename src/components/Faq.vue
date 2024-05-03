@@ -49,7 +49,7 @@
     </div>
   </div>
 </template>
-<script setup lang="ts">
+<script setup>
   import { ref } from 'vue';
   import VueCollapsible from 'vue-height-collapsible/vue3';
 
@@ -104,7 +104,7 @@
       },
     },
   });
-  const accordians: any = ref(0);
+  const accordians = ref(0);
 </script>
 <style>
   [data-height-collapsible] {

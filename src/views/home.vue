@@ -2,10 +2,12 @@
   import { ref } from 'vue';
   import Testimonial from '@/components/Testimonial.vue';
   import Faq from '@/components/Faq.vue';
+  import Modal from '@/components/Modal.vue';
   import { useAppStore } from '@/stores/index';
   const store = useAppStore();
 
   const activeTab = ref('all');
+  const dialog = ref(null);
 
   const products = [
     {
@@ -106,26 +108,26 @@
           <div class="relative bg-[url('/assets/images/world-map.png')] bg-cover bg-top bg-no-repeat pt-14 pb-0 lg:pt-20 lg:pb-60 xl:pt-36">
             <div class="relative z-[1] text-center text-white lg:w-3/5 ltr:lg:text-left rtl:lg:text-right xl:w-1/2">
               <h2 class="text-4xl font-extrabold leading-normal sm:text-5xl lg:text-[70px] lg:leading-[90px]">
-                Make your <span class="italic text-primary">team </span> <span class="italic text-secondary">work</span> together
+                Simply <span class="italic text-primary">The Best </span>
               </h2>
-              <p class="my-8 text-lg lg:w-[90%]">In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstrate.</p>
-              <router-link to="/" class="btn mx-auto mt-2 block w-fit bg-white lg:mx-0 lg:rtl:ml-auto">read more</router-link>
+              <p class="my-8 text-lg lg:w-[90%]">Official Website PT Fuboru Indonesia - Produsen Suku Cadang Ootomotif & Mesin Statis</p>
+              <router-link to="/" class="btn mx-auto mt-2 block w-fit bg-white lg:mx-0 lg:rtl:ml-auto">Baca Selengkapnya</router-link>
             </div>
             <div
-              class="bottom-0 mx-auto mt-5 mb-2 w-auto ltr:right-0 rtl:left-0 md:w-[540px] lg:absolute lg:mb-0 lg:mt-0 xl:w-[650px]"
+              class="top-[20px] mx-auto mt-5 mb-2 w-auto ltr:-right-[170px] rtl:-left-[150px] md:w-[540px] lg:absolute lg:mb-0 lg:mt-0 xl:w-[650px]"
               :data-aos="store.direction === 'rtl' ? 'fade-right' : 'fade-left'"
               data-aos-duration="1000"
               data-aos-offset="0"
               data-aos-delay="300"
             >
-              <img src="/assets/images/fuboru-logo-banner.webp" alt="home-banner-icon" class="rtl:rotate-y-180" />
+              <img src="/assets/images/fuboru-logo-banner.webp" alt="home-banner-icon" />
             </div>
           </div>
         </div>
       </div>
     </div>
 
-    <section class="py-10 lg:py-20 aos-init aos-animate" data-aos="fade-up" data-aos-duration="1000">
+    <section class="py-10 lg:py-20 aos-init aos-animate" data-aos="fade-up" data-aos-duration="1000" id="tentang-kami">
       <div class="container">
         <div class="flex flex-col gap-7 lg:flex-row">
           <div
@@ -158,187 +160,147 @@
       </div>
     </section>
 
-    <section class="py-14 dark:!bg-none lg:py-[100px]" style="background: linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, #ffffff 54.69%)">
-      <div
-        class="relative my-14 mx-auto border-[10px] border-transparent bg-black py-14 dark:border-black dark:bg-gray-dark lg:my-[100px] lg:py-[100px] xl:max-w-[1440px] xl:rounded-3xl"
-      >
-        <div class="container">
-          <div class="items-end gap-4 lg:flex xl:gap-0">
-            <div class="lg:w-1/2">
-              <div class="heading mb-16 text-center ltr:lg:text-left rtl:lg:text-right">
-                <h6>What Makes us Different?</h6>
-                <h4 class="leading-normal !text-white lg:!leading-[50px]">We bring solutions to make life easier for our customers.</h4>
-              </div>
-              <div class="grid gap-x-7 gap-y-12 sm:grid-cols-2" :data-aos="store.direction === 'rtl' ? 'fade-left' : 'fade-right'" data-aos-duration="1000">
-                <div class="flex transition">
-                  <div>
-                    <svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
-                      <g clip-path="url(#clip0_36_337)">
-                        <path
-                          opacity="0.5"
-                          d="M19.2867 23.9285V25.119C19.2867 25.7505 19.0358 26.3561 18.5893 26.8027C18.1427 27.2492 17.5371 27.5001 16.9056 27.5001H12.1435C11.512 27.5001 10.9063 27.2492 10.4598 26.8027C10.0133 26.3561 9.76239 25.7505 9.76239 25.119V23.9285H19.2867Z"
-                          fill="#B476E5"
-                        />
-                        <path
-                          d="M9.69213 21.5473C9.33855 20.0318 7.74323 18.7924 7.08844 17.9757C5.96718 16.5748 5.26448 14.8857 5.06127 13.1028C4.85807 11.32 5.16263 9.51606 5.93988 7.89876C6.71712 6.28146 7.93542 4.91663 9.45445 3.96148C10.9735 3.00632 12.7314 2.49971 14.5258 2.5C16.3202 2.50029 18.078 3.00746 19.5967 3.9631C21.1154 4.91874 22.3333 6.28396 23.11 7.90151C23.8867 9.51906 24.1907 11.3231 23.9869 13.1059C23.7831 14.8886 23.0799 16.5776 21.9582 17.9781C21.3034 18.7936 19.7105 20.033 19.3569 21.5473H9.69094H9.69213ZM15.715 12.029V7.26094L10.3576 14.4101H13.334V19.1722L18.6914 12.029H15.715Z"
-                          fill="#B476E5"
-                        />
-                      </g>
-                      <defs>
-                        <clipPath id="clip0_36_337">
-                          <rect width="30" height="30" fill="white" />
-                        </clipPath>
-                      </defs>
-                    </svg>
-                  </div>
-                  <div class="ltr:pl-3 rtl:pr-3">
-                    <h4 class="mb-2 text-lg font-bold text-white">Creativity</h4>
-                    <p class="font-semibold">Curabitur blandit lacus porttitor ridiculus mus.</p>
-                  </div>
-                </div>
-                <div class="flex transition">
-                  <div>
-                    <svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
-                      <g clip-path="url(#clip0_36_379)">
-                        <path
-                          d="M7.38901 21.9074C8.8422 21.9074 10.0284 20.7213 10.0284 19.268C10.0284 17.8148 8.84225 16.6287 7.38901 16.6287C5.93576 16.6287 4.74963 17.8148 4.74963 19.268C4.74963 20.7212 5.90621 21.9074 7.38901 21.9074Z"
-                          fill="#B476E5"
-                        />
-                        <path
-                          d="M9.64281 22.5896C8.99038 23.0344 8.21938 23.2717 7.38902 23.2717C6.55865 23.2717 5.78771 23.0048 5.13522 22.5896C3.86013 23.3014 3 24.6655 3 26.2372V26.7709C3 27.364 3.47454 27.8386 4.06761 27.8386H9.73188V27.6013C9.73188 26.2075 10.2656 24.9324 11.0962 23.9537C10.7104 23.3901 10.2062 22.9158 9.64276 22.5896L9.64281 22.5896Z"
-                          fill="#B476E5"
-                        />
-                        <path
-                          d="M20.9714 19.268C20.9714 20.7212 22.1575 21.9074 23.6107 21.9074C25.064 21.9074 26.2501 20.7213 26.2501 19.268C26.2501 17.8148 25.064 16.6287 23.6107 16.6287C22.128 16.6287 20.9714 17.815 20.9714 19.268Z"
-                          fill="#B476E5"
-                        />
-                        <path
-                          d="M25.8646 22.5893C25.2122 23.0341 24.4412 23.2714 23.6109 23.2714C22.7805 23.2714 21.9797 23.0045 21.3571 22.5596C20.764 22.8858 20.2894 23.3306 19.9039 23.894C20.7638 24.8727 21.2681 26.1478 21.2681 27.5416V27.7789H26.9324C27.5255 27.7789 28 27.3044 28 26.7113V26.1776C27.9998 24.6652 27.1397 23.3308 25.8646 22.5894L25.8646 22.5893Z"
-                          fill="#B476E5"
-                        />
-                        <path
-                          d="M12.8456 20.6318C12.8456 22.085 14.0318 23.2712 15.485 23.2712C16.9383 23.2712 18.1244 22.085 18.1244 20.6318C18.1244 19.1786 16.9383 17.9924 15.485 17.9924C14.0318 17.9924 12.8456 19.1786 12.8456 20.6318Z"
-                          fill="#B476E5"
-                        />
-                        <path
-                          d="M17.7388 23.9536C17.0864 24.3984 16.3154 24.6356 15.485 24.6356C14.6547 24.6356 13.8837 24.3688 13.2312 23.9536C11.9561 24.6654 11.096 26.0295 11.096 27.6012V28.1349C11.096 28.728 11.5706 29.2025 12.1636 29.2025H18.8065C19.3996 29.2025 19.8741 28.728 19.8741 28.1349V27.6012C19.8739 26.0295 19.014 24.6654 17.7387 23.9536H17.7388Z"
-                          fill="#B476E5"
-                        />
-                        <path
-                          opacity="0.5"
-                          d="M11.0663 9.15515C11.3036 10.6379 12.5787 11.7945 14.1209 11.7945C14.625 11.7945 15.07 11.676 15.4852 11.4683C15.9003 11.676 16.3451 11.7945 16.8495 11.7945C18.3916 11.7945 19.6965 10.6676 19.904 9.15515C20.9123 8.65103 21.5945 7.613 21.5945 6.39726C21.5945 5.18132 20.9125 4.17307 19.904 3.63937C19.6667 2.15658 18.3916 1 16.8495 1C16.3453 1 15.9004 1.11853 15.4852 1.32623C15.07 1.11853 14.6253 1 14.1209 1C12.5787 1 11.2738 2.12698 11.0663 3.63937C10.0581 4.1435 9.37585 5.18153 9.37585 6.39726C9.37606 7.613 10.0581 8.65106 11.0663 9.15515ZM18.5989 5.3888C19.1625 5.3888 19.6072 5.83356 19.6072 6.39705C19.6072 6.96055 19.1624 7.4053 18.5989 7.4053C18.0354 7.4053 17.5907 6.96055 17.5907 6.39705C17.5907 5.83356 18.0354 5.3888 18.5989 5.3888ZM15.485 5.3888C16.0485 5.3888 16.4933 5.83356 16.4933 6.39705C16.4933 6.96055 16.0485 7.4053 15.485 7.4053C14.9215 7.4053 14.4768 6.96055 14.4768 6.39705C14.4768 5.83356 14.9215 5.3888 15.485 5.3888ZM12.3711 5.3888C12.9346 5.3888 13.3793 5.83356 13.3793 6.39705C13.3793 6.96055 12.9346 7.4053 12.3711 7.4053C11.8076 7.4053 11.3629 6.96055 11.3629 6.39705C11.3629 5.83356 11.8076 5.3888 12.3711 5.3888Z"
-                          fill="#B476E5"
-                        />
-                        <path
-                          d="M9.25737 15.9762C9.73192 15.9762 10.1173 15.5906 10.1173 15.1163C10.1173 14.6417 9.7317 14.2563 9.25737 14.2563C8.78283 14.2563 8.39746 14.6419 8.39746 15.1163C8.39746 15.5908 8.78305 15.9762 9.25737 15.9762Z"
-                          fill="#B476E5"
-                        />
-                        <path
-                          opacity="0.5"
-                          d="M11.3036 12.0911C10.7105 12.0911 10.2064 12.5656 10.2064 13.1883C10.2064 13.7813 10.6809 14.2855 11.3036 14.2855C11.9265 14.2855 12.4008 13.811 12.4008 13.1883C12.3712 12.5656 11.8967 12.0911 11.3036 12.0911Z"
-                          fill="#B476E5"
-                        />
-                        <path
-                          d="M20.8527 15.1163C20.8527 15.5908 21.2383 15.9762 21.7126 15.9762C22.1872 15.9762 22.5726 15.5906 22.5726 15.1163C22.5726 14.6417 22.187 14.2563 21.7126 14.2563C21.2383 14.2563 20.8527 14.6417 20.8527 15.1163Z"
-                          fill="#B476E5"
-                        />
-                        <path
-                          opacity="0.5"
-                          d="M19.6665 12.0911C19.0734 12.0911 18.5693 12.5656 18.5693 13.1883C18.5693 13.7813 19.0438 14.2855 19.6665 14.2855C20.2596 14.2855 20.7637 13.811 20.7637 13.1883C20.7637 12.5656 20.2892 12.0911 19.6665 12.0911Z"
-                          fill="#B476E5"
-                        />
-                        <path
-                          opacity="0.5"
-                          d="M15.4851 12.5063C14.892 12.5063 14.3879 12.9809 14.3879 13.6036C14.3879 14.1966 14.8624 14.7008 15.4851 14.7008C16.0782 14.7008 16.5823 14.2262 16.5823 13.6036C16.5823 13.0105 16.0782 12.5063 15.4851 12.5063Z"
-                          fill="#B476E5"
-                        />
-                        <path
-                          d="M15.485 15.353C15.0105 15.353 14.6251 15.7386 14.6251 16.2129C14.6251 16.6875 15.0107 17.0729 15.485 17.0729C15.9596 17.0729 16.345 16.6873 16.345 16.2129C16.345 15.7386 15.9596 15.353 15.485 15.353Z"
-                          fill="#B476E5"
-                        />
-                      </g>
-                      <defs>
-                        <clipPath id="clip0_36_379">
-                          <rect width="30" height="30" fill="white" />
-                        </clipPath>
-                      </defs>
-                    </svg>
-                  </div>
-                  <div class="ltr:pl-3 rtl:pr-3">
-                    <h4 class="mb-2 text-lg font-bold text-white">Innovative Thinking</h4>
-                    <p class="font-semibold">There are many variations of passages of Lorem Ipsum available</p>
-                  </div>
-                </div>
-                <div class="flex transition">
-                  <div>
-                    <svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
-                      <g clip-path="url(#clip0_36_392)">
-                        <path
-                          opacity="0.5"
-                          fill-rule="evenodd"
-                          clip-rule="evenodd"
-                          d="M14.2364 27.9997V24.9966C12.4567 25.1078 11.1218 23.6617 11.1218 21.9935C11.1218 20.3249 12.4567 18.9904 14.2364 19.1015V16.0984H8.67477C8.89731 15.6535 9.3422 15.0973 9.3422 14.5412C9.3422 12.3167 6.00534 12.3167 6.00534 14.5412C6.00534 15.0975 6.33905 15.6535 6.56161 16.0984H1V27.1102C1 27.5551 1.44487 27.9999 1.88974 27.9999H14.2365L14.2364 27.9997Z"
-                          fill="#B476E5"
-                        />
-                        <path
-                          fill-rule="evenodd"
-                          clip-rule="evenodd"
-                          d="M28.6959 16.0981H25.2477C25.3588 17.8778 24.0242 19.3238 22.3557 19.3238C20.576 19.3238 19.2412 17.8778 19.3526 16.0981H15.4595V20.7698C15.0146 20.6586 14.4584 20.3249 14.0135 20.3249C11.9001 20.3249 11.9001 23.6618 14.0135 23.6618C14.4584 23.6618 15.0146 23.4392 15.4595 23.2169V27.9997H27.8063C28.2511 27.9997 28.696 27.5549 28.696 27.11V16.0982L28.6959 16.0981Z"
-                          fill="#B476E5"
-                        />
-                        <path
-                          fill-rule="evenodd"
-                          clip-rule="evenodd"
-                          d="M28.6731 14.9015V3.88974C28.6731 3.44487 28.2283 3 27.672 3H15.4367V5.89196C17.1052 5.66942 18.6624 7.00423 18.6624 8.78392C18.6624 10.5636 17.1052 11.8985 15.4367 11.6759V14.9016H20.9983C20.8871 15.3464 20.5534 15.9027 20.5534 16.3476C20.5534 18.5722 24.0017 18.5722 24.0017 16.3476C24.0017 15.9027 23.668 15.3465 23.4454 14.9016L28.6731 14.9015Z"
-                          fill="#B476E5"
-                        />
-                      </g>
-                      <defs>
-                        <clipPath id="clip0_36_392">
-                          <rect width="30" height="30" fill="white" />
-                        </clipPath>
-                      </defs>
-                    </svg>
-                  </div>
-                  <div class="ltr:pl-3 rtl:pr-3">
-                    <h4 class="mb-2 text-lg font-bold text-white">Rapid Solutions</h4>
-                    <p class="font-semibold">Contrary to popular belief, Lorem Ipsum is not simply random text.</p>
-                  </div>
-                </div>
-                <div class="flex transition">
-                  <div>
-                    <svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
-                      <g clip-path="url(#clip0_36_401)">
-                        <path
-                          opacity="0.5"
-                          d="M9.68219 19.8007L10.8868 17.8733C11.9699 18.5518 13.2226 18.9106 14.5006 18.9086C15.7787 18.9106 17.0313 18.5518 18.1144 17.8733L19.319 19.8007C17.8749 20.7054 16.2047 21.184 14.5006 21.1814C12.7965 21.184 11.1263 20.7054 9.68219 19.8007Z"
-                          fill="#B476E5"
-                        />
-                        <path
-                          d="M24.7284 10.9537C25.3312 10.9537 25.9093 11.1932 26.3355 11.6194C26.7618 12.0457 27.0012 12.6238 27.0012 13.2265V17.7722C27.0012 18.375 26.7618 18.9531 26.3355 19.3794C25.9093 19.8056 25.3312 20.0451 24.7284 20.0451H23.5215C23.2445 22.2421 22.1752 24.2625 20.5143 25.7272C18.8534 27.1918 16.715 28 14.5006 28V25.7272C16.309 25.7272 18.0433 25.0088 19.322 23.7301C20.6007 22.4513 21.3191 20.717 21.3191 18.9086V12.0901C21.3191 10.2817 20.6007 8.54743 19.322 7.26871C18.0433 5.98999 16.309 5.27162 14.5006 5.27162C12.6922 5.27162 10.9579 5.98999 9.67919 7.26871C8.40047 8.54743 7.6821 10.2817 7.6821 12.0901V20.0451H4.27284C3.67004 20.0451 3.09194 19.8056 2.6657 19.3794C2.23946 18.9531 2 18.375 2 17.7722V13.2265C2 12.6238 2.23946 12.0457 2.6657 11.6194C3.09194 11.1932 3.67004 10.9537 4.27284 10.9537H5.47972C5.75704 8.75689 6.82646 6.73677 8.48733 5.27238C10.1482 3.808 12.2864 3 14.5006 3C16.7149 3 18.853 3.808 20.5139 5.27238C22.1748 6.73677 23.2442 8.75689 23.5215 10.9537H24.7284Z"
-                          fill="#B476E5"
-                        />
-                      </g>
-                      <defs>
-                        <clipPath id="clip0_36_401">
-                          <rect width="30" height="30" fill="white" />
-                        </clipPath>
-                      </defs>
-                    </svg>
-                  </div>
-                  <div class="ltr:pl-3 rtl:pr-3">
-                    <h4 class="mb-2 text-lg font-bold text-white">Top-Notch Support</h4>
-                    <p class="font-semibold">It has survived not only five centuries, but also the leap into electronic typesetting</p>
-                  </div>
-                </div>
-              </div>
+    <section class="overflow-x-hidden py-14 dark:!bg-none lg:py-[100px]">
+      <div class="relative bg-center">
+        <img src="/assets/images/how-we-do-it_.png" alt="fuboru-team" class="absolute inset-x-0 bottom-[93%] mx-auto hidden md:block xl:bottom-[91%]" />
+        <img
+          src="/assets/images/service-video-bg.png"
+          alt="service-video-bg"
+          class="relative z-[1] h-[400px] w-full object-cover object-top sm:h-[500px] lg:h-[738px]"
+        />
+        <div class="absolute -inset-x-4 bottom-0 h-12 -rotate-[2deg] bg-[#7780A1]/10 xl:bottom-3"></div>
+        <div class="absolute top-1/2 z-[1] -translate-y-1/2 ltr:left-5 ltr:pr-5 rtl:right-5 rtl:pl-5 ltr:lg:left-[10%] rtl:lg:right-[10%] xl:w-[620px]">
+          <p class="pb-8 text-2xl font-extrabold text-white sm:text-4xl sm:leading-[50px]">Fuboru Part Mutu terjamin, awet & tahan lama</p>
+          <p class="pb-8 text-sm font-normal text-white sm:text-lg">
+            Tujuan utama kami adalah menghasilkan produk yang handal dan bermutu tinggi. Departemen Quality Control kami menetapkan standar mutu yang tinggi
+            terhadap seluruh produk dan harus melalui pengawasan yang ketat. Proses pengendalian mutu ini dimulai dari pemilihan bahan baku hingga barang jadi.
+          </p>
+          <button
+            type="button"
+            class="group flex h-[60px] w-[60px] items-center justify-center rounded-full bg-white ring-[5px] ring-white/10 transition hover:bg-secondary"
+            @click="dialog.open()"
+          >
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" class="text-secondary group-hover:text-black/60">
+              <g clip-path="url(#clip0_279_1223)">
+                <path
+                  fill-rule="evenodd"
+                  clip-rule="evenodd"
+                  d="M7.12543 0.661061C4.53562 -1.06548 1.06668 0.791048 1.06668 3.90361V12.0964C1.06668 15.209 4.53562 17.0655 7.12543 15.3389L13.27 11.2425C15.5838 9.70001 15.5838 6.3 13.27 4.75746L7.12543 0.661061Z"
+                  fill="currentColor"
+                />
+              </g>
+              <defs>
+                <clipPath id="clip0_279_1223">
+                  <rect width="16" height="16" fill="white" />
+                </clipPath>
+              </defs>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <modal
+      ref="dialog"
+      width="960"
+      :close_by_overlay="true"
+      :close-btn="true"
+      close_style="floating"
+      content-class="pt-8 px-0 pb-0 !bg-transparent"
+      close-btn-class="!top-0 ltr:!right-0 rtl:!right-auto rtl:!left-0 !text-white !text-3xl"
+    >
+      <div class="bg-black !p-4 dark:bg-gray-dark">
+        <div class="relative">
+          <div class="aspect-video">
+            <iframe
+              class="absolute top-0 left-0 h-full w-full"
+              src="https://www.youtube.com/embed/wQZRBEJ4A4I"
+              frameborder="0"
+              allowfullscreen
+              allow="autoplay"
+            ></iframe>
+          </div>
+        </div>
+      </div>
+    </modal>
+
+    <section class="py-14 dark:!bg-none lg:py-[100px]" style="background: linear-gradient(rgba(255, 255, 255, 0) 0%, rgb(255, 255, 255) 54.69%)">
+      <div class="container">
+        <div class="heading text-center">
+          <h4>Nilai-nilai di balik pekerjaan kami</h4>
+          <h6 class="!text-primary">Budaya kerja</h6>
+        </div>
+        <div class="grid grid-cols-1 justify-between gap-7 ltr:text-left rtl:text-right aos-init aos-animate" data-aos="fade-up" data-aos-duration="1000">
+          <div
+            class="group flex gap-6 rounded-[32px] border-2 border-white/[0.1] bg-white py-10 px-6 duration-200 hover:border-secondary hover:bg-secondary/20 dark:bg-transparent dark:bg-gradient-to-b dark:from-white/5 dark:to-transparent"
+          >
+            <div class="flex-1">
+              <h3 class="text-2xl font-extrabold text-gray">Corporate Value</h3>
+              <p class="mt-4 text-lg font-semibold">
+                Pengembangan demi pengembangan terus dilakukan agar VISI kami untuk Menjadi 10 besar skala Nasional industri suku cadang otomotif dapat
+                tercapai. Adapun MISI kami adalah Senantiasa memberikan pelayanan terbaik bagi customer baik internal maupun eksternal. Kami yakin semua dapat
+                terwujud dengan menerapkan Budaya Perusahaan BERIMAN, BERSYUKUR, DISIPLIN, BEKERJA, HEBAT.
+              </p>
             </div>
-            <div class="top-1/2 mx-auto mt-10 ltr:right-5 rtl:left-5 md:w-[45%] lg:mt-0 xl:absolute xl:-translate-y-1/2">
-              <img src="/assets/images/box-img.png" alt="box-img" class="w-full rtl:rotate-y-180" />
+            <div class="flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl bg-[rgba(71,189,255,0.06)] text-[#47BDFF]">
+              <svg width="34" height="36" viewBox="0 0 34 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path
+                  d="M33.6822 11.1466L31.4947 7.35783C31.2046 6.85537 30.7268 6.48878 30.1665 6.33863C29.606 6.18848 29.009 6.26709 28.5066 6.55717L26.9578 7.45191C25.4683 6.11519 23.7148 5.10614 21.8106 4.49V2.6875C21.8106 2.10734 21.5801 1.55091 21.1699 1.14071C20.7597 0.73044 20.2033 0.5 19.6231 0.5H15.2481C14.668 0.5 14.1115 0.73044 13.7013 1.14071C13.2911 1.55091 13.0606 2.10734 13.0606 2.6875V4.48342C11.1508 5.09487 9.3932 6.10602 7.90472 7.44967L6.36031 6.55717C5.85869 6.26989 5.26376 6.19282 4.70544 6.34283C4.14719 6.49284 3.67098 6.85775 3.38097 7.35783L1.19347 11.1466C0.903388 11.649 0.824779 12.2461 0.974929 12.8064C1.12508 13.3668 1.49167 13.8446 1.99406 14.1347L3.55156 15.0359C3.13149 16.9919 3.13149 19.0147 3.55156 20.9706L1.99406 21.8697C1.49167 22.1597 1.12508 22.6376 0.974929 23.1979C0.824779 23.7583 0.903388 24.3554 1.19347 24.8578L3.38097 28.6466C3.67105 29.149 4.1488 29.5156 4.70922 29.6657C5.26957 29.8159 5.86667 29.7372 6.36906 29.4472L7.91781 28.5525C9.40734 29.892 11.1628 30.902 13.0694 31.5166V33.3125C13.0694 33.8927 13.2998 34.4491 13.7101 34.8593C14.1203 35.2696 14.6767 35.5 15.2569 35.5H19.6319C20.212 35.5 20.7684 35.2696 21.1787 34.8593C21.5889 34.4491 21.8194 33.8927 21.8194 33.3125V31.5187C23.7277 30.9067 25.4844 29.8964 26.9731 28.5547L28.5153 29.4472C29.0178 29.7372 29.6148 29.8159 30.1752 29.6657C30.7356 29.5156 31.2133 29.149 31.5035 28.6466L33.691 24.8578C33.981 24.3554 34.0596 23.7583 33.9094 23.1979C33.7594 22.6376 33.3927 22.1597 32.8903 21.8697L31.335 20.9728C31.7562 19.0155 31.7562 16.991 31.335 15.0338L32.8903 14.1347C33.3912 13.8431 33.756 13.3647 33.9045 12.8045C34.0529 12.2442 33.973 11.6479 33.6822 11.1466ZM17.4356 25.6562C15.9214 25.6562 14.4411 25.2072 13.182 24.3659C11.923 23.5247 10.9417 22.3289 10.3622 20.9299C9.78268 19.5309 9.63106 17.9915 9.92646 16.5063C10.2219 15.0211 10.9511 13.657 12.0218 12.5862C13.0926 11.5155 14.4568 10.7863 15.942 10.4909C17.4272 10.1954 18.9665 10.347 20.3656 10.9266C21.7646 11.506 22.9603 12.4874 23.8016 13.7464C24.6428 15.0055 25.0919 16.4858 25.0919 18C25.0919 20.0306 24.2852 21.978 22.8494 23.4138C21.4136 24.8496 19.4662 25.6562 17.4356 25.6562Z"
+                  fill="currentcolor"
+                ></path>
+              </svg>
+            </div>
+          </div>
+          <div
+            class="group flex gap-6 rounded-[32px] border-2 border-white/[0.1] bg-white py-10 px-6 duration-200 hover:border-secondary hover:bg-secondary/20 dark:bg-transparent dark:bg-gradient-to-b dark:from-white/5 dark:to-transparent"
+          >
+            <div class="flex-1">
+              <h3 class="text-2xl font-extrabold text-gray">Membership</h3>
+              <p class="mt-4 text-lg font-semibold">
+                GIAMM (Gabungan Industri Alat Alat Mobil dan Motor)<br />
+                IATO Indonesia (Ikatan Ahli Otomotif )<br />
+                SOI (Sentra Otomotif Indonesia)<br />
+                OTOPoint (Ikatan Peduli Otomotif)<br />
+                SEMA (Specialty Equipment Market Association USA)<br />
+                AAAA (Australian Automotive Aftermarket Association)<br />
+                PIKKO (Perkumpulan Industri Kecil dan Menengah Komponen Otomotif)<br />
+              </p>
+            </div>
+            <div class="flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl bg-[rgba(180,118,229,0.06)] text-[#B476E5]">
+              <svg width="33" height="33" viewBox="0 0 33 33" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path
+                  d="M16.8133 0.821289C13.6502 0.821289 10.5582 1.75924 7.92817 3.51658C5.29817 5.27392 3.2483 7.77167 2.03784 10.694C0.827388 13.6163 0.51066 16.8319 1.12771 19.9343C1.74483 23.0365 3.26798 25.8862 5.50469 28.1228C7.74133 30.3596 10.591 31.8827 13.6933 32.4998C16.7956 33.1169 20.0112 32.8001 22.9335 31.5897C25.8559 30.3792 28.3536 28.3294 30.111 25.6994C31.8683 23.0694 32.8062 19.9773 32.8062 16.8142C32.8013 12.5741 31.1147 8.50915 28.1166 5.51096C25.1184 2.51278 21.0534 0.826226 16.8133 0.821289ZM26.0453 11.7498L16.9226 24.1296C16.8149 24.2725 16.6798 24.3925 16.5253 24.4827C16.3707 24.5728 16.1997 24.6312 16.0222 24.6545C15.8449 24.6778 15.6646 24.6656 15.4919 24.6185C15.3193 24.5714 15.1578 24.4904 15.0168 24.3802L8.50238 19.1718C8.36568 19.0624 8.25185 18.9272 8.16744 18.7738C8.08302 18.6204 8.02962 18.4519 8.01036 18.278C7.97135 17.9265 8.07356 17.5741 8.29448 17.2979C8.51539 17.0219 8.83691 16.8449 9.18834 16.8059C9.36232 16.7867 9.53844 16.8018 9.70658 16.8506C9.87471 16.8993 10.0316 16.9807 10.1683 17.09L15.6005 21.4361L23.8995 10.1731C23.9994 10.0232 24.1287 9.89511 24.2795 9.79658C24.4303 9.69798 24.5996 9.63101 24.777 9.59972C24.9544 9.56843 25.1363 9.57344 25.3118 9.6144C25.4873 9.65542 25.6525 9.73156 25.7977 9.83823C25.9429 9.94489 26.065 10.0799 26.1565 10.2351C26.248 10.3903 26.3071 10.5624 26.3303 10.7411C26.3535 10.9198 26.3401 11.1012 26.2911 11.2746C26.2421 11.448 26.1585 11.6096 26.0453 11.7498Z"
+                  fill="currentcolor"
+                ></path>
+              </svg>
+            </div>
+          </div>
+          <div
+            class="group flex gap-6 rounded-[32px] border-2 border-white/[0.1] bg-white py-10 px-6 duration-200 hover:border-secondary hover:bg-secondary/20 dark:bg-transparent dark:bg-gradient-to-b dark:from-white/5 dark:to-transparent"
+          >
+            <div class="flex-1">
+              <h3 class="text-2xl font-extrabold text-gray">Corporate Social Responsibility</h3>
+              <p class="mt-4 text-lg font-semibold">
+                Kami menyadari bahwa pertumbuhan usaha harus diiringi dengan pelaksanaan tanggung jawab sosial. Oleh karena itu berpedoman bahwa penerapan
+                tanggung jawab sosial, termasuk pengembangan sosial dan kemasyarakatan serta pemberdayaan masyarakat, adalah sebuah komitmen untuk membuat
+                komunitasnya menjadi baik melalui kebijakan praktek-praktek bisnis dan kontribusi dari sumber daya Perseroan sesuai dengan prinsip pelaksanaan
+                Good Corporate Governance.
+              </p>
+            </div>
+            <div class="flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl bg-[rgba(180,118,229,0.06)] text-[#B476E5]">
+              <svg width="39" height="23" viewBox="0 0 39 23" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path
+                  d="M2.41997 22.2C3.0107 22.2012 3.57945 21.9763 4.00967 21.5715L14.2216 11.993C14.3677 11.8547 14.5621 11.779 14.7633 11.782C14.9645 11.785 15.1565 11.8665 15.2985 12.0091L18.7335 15.4457C19.767 16.4323 21.1408 16.9828 22.5696 16.9828C23.9984 16.9828 25.3722 16.4323 26.4057 15.4457L32.1553 9.69598C32.1912 9.66 32.2338 9.63151 32.2807 9.61205C32.3275 9.59252 32.3779 9.58251 32.4286 9.58251C32.4794 9.58251 32.5297 9.59252 32.5765 9.61205C32.6234 9.63151 32.6661 9.66 32.7019 9.69598L35.4248 12.4093C35.7156 12.6987 36.1092 12.8611 36.5195 12.861C36.9305 12.8605 37.3245 12.6972 37.6153 12.4067C37.9061 12.1163 38.0698 11.7224 38.0706 11.3114V2.04953C38.0702 1.63842 37.9066 1.24432 37.6158 0.953751C37.3249 0.663251 36.9306 0.500012 36.5195 0.500012H27.2206C26.9128 0.498822 26.6116 0.589332 26.3554 0.760062C26.0992 0.930722 25.8997 1.17383 25.7823 1.45838C25.6649 1.74293 25.6348 2.05597 25.696 2.35767C25.7573 2.65937 25.9069 2.93601 26.126 3.15224L28.8586 5.88483C28.9314 5.95777 28.9724 6.05661 28.9727 6.15972C28.9729 6.21054 28.9629 6.26094 28.9433 6.30784C28.9237 6.35481 28.8949 6.3973 28.8586 6.43293L23.1169 12.1762C22.971 12.3205 22.774 12.4015 22.5688 12.4015C22.3635 12.4015 22.1666 12.3205 22.0207 12.1762L18.584 8.73957C17.593 7.73857 16.2499 7.16443 14.8415 7.13986C13.4331 7.11522 12.0707 7.64197 11.0453 8.60776L0.830203 18.1783C0.491543 18.4975 0.256413 18.911 0.155263 19.3652C0.054043 19.8195 0.0914927 20.2937 0.262713 20.7265C0.433933 21.1593 0.731013 21.5307 1.11559 21.7928C1.50017 22.055 1.95454 22.1957 2.41997 22.1968V22.2Z"
+                  fill="currentcolor"
+                ></path>
+              </svg>
             </div>
           </div>
         </div>
       </div>
+    </section>
+
+    <section class="bg-[url(/assets/images/team-bg.png)] bg-cover bg-center bg-no-repeat py-10 dark:bg-black/50 lg:py-[100px]" id="produk">
       <div class="container">
         <div class="heading text-center">
           <h4>Produk</h4>
@@ -376,7 +338,7 @@
       </div>
     </section>
 
-    <section class="bg-[url(/assets/images/team-bg.png)] bg-cover bg-center bg-no-repeat py-14 dark:bg-black/50 lg:py-[100px]">
+    <section class="bg-gradient-to-b from-white/60 to-transparent py-10 dark:from-white/[0.02] lg:py-[100px]" id="jaminan-kualitas">
       <div class="container">
         <div class="heading text-center">
           <h4>Jaminan Kualitas</h4>
@@ -396,20 +358,20 @@
       </div>
     </section>
 
-    <section class="bg-gradient-to-t from-white/[55%] to-transparent py-14 dark:bg-white/[0.02] dark:from-transparent lg:py-[100px]">
+    <section class="bg-gradient-to-t from-white/[55%] to-transparent py-14 dark:bg-white/[0.02] dark:from-transparent lg:py-[100px]" id="faq">
       <faq></faq>
     </section>
 
-    <Testimonial class="py-14 lg:py-[100px]"></Testimonial>
+    <Testimonial class="py-10 lg:py-[100px]"></Testimonial>
 
-    <section class="py-14 dark:bg-gray-dark lg:py-[100px]">
+    <section class="py-14 dark:bg-gray-dark lg:py-[100px]" id="kontak">
       <div class="container">
         <div class="relative z-10 lg:flex">
           <div class="heading text-center lg:mb-0 lg:w-1/3 ltr:lg:pr-10 ltr:lg:text-left rtl:lg:pl-10 rtl:lg:text-right">
-            <h6>Get In Touch.</h6>
-            <h4 class="sm:!leading-[50px]">Ready to Get Started?</h4>
+            <h4 class="sm:!leading-[50px]">Kontak</h4>
+            <h6>Silahkan menghubungi kami untuk mendapatkan informasi terbaru seputar produk otomotif fuboru</h6>
             <img
-              src="/assets/images/form-img.png"
+              src="/assets/images/form-light-img.svg"
               alt="form-img"
               class="mx-auto"
               :data-aos="store.direction === 'rtl' ? 'fade-left' : 'fade-right'"
@@ -556,7 +518,7 @@
               </svg>
             </div>
             <div class="mt-10 text-center ltr:lg:text-right rtl:lg:text-left">
-              <button type="button" class="btn bg-gray px-12 capitalize text-white dark:bg-white dark:text-black dark:hover:bg-secondary">Send Message</button>
+              <button type="button" class="btn bg-gray px-12 capitalize text-white dark:bg-white dark:text-black dark:hover:bg-secondary">Kirim</button>
             </div>
           </form>
         </div>

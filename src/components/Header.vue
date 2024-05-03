@@ -24,16 +24,16 @@
             <ul @click="showMenu = false">
               <li><router-link to="/">Beranda</router-link></li>
               <li>
-                <router-link to="/">Tentang Kami</router-link>
+                <router-link to="#tentang-kami">Tentang Kami</router-link>
               </li>
               <li>
-                <router-link to="/">Produk</router-link>
+                <router-link to="#produk">Produk</router-link>
               </li>
               <li>
-                <router-link to="/">Jaminan Kualitas</router-link>
+                <router-link to="#jaminan-kualitas">Jaminan Kualitas</router-link>
               </li>
               <li>
-                <router-link to="/">Kontak</router-link>
+                <router-link to="#kontak">Kontak</router-link>
               </li>
             </ul>
           </div>

@@ -6,7 +6,7 @@
           <img src="/assets/images/logo.png" alt="plurk" class="h-7" />
           <ul class="mt-12 flex items-center gap-8">
             <li>
-              <a href="javascript:">
+              <a href="http://facebook.com/fuboru.co.id" target="_blank" rel="noopener noreferrer">
                 <svg
                   width="10"
                   height="20"
@@ -23,24 +23,7 @@
               </a>
             </li>
             <li>
-              <a href="javascript:">
-                <svg
-                  width="23"
-                  height="18"
-                  viewBox="0 0 23 18"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                  class="transition hover:scale-110 hover:text-secondary"
-                >
-                  <path
-                    d="M22.8849 2.11613C22.0668 2.475 21.1951 2.71288 20.2862 2.82838C21.2212 2.27013 21.9348 1.39287 22.2703 0.3355C21.3986 0.85525 20.4361 1.22238 19.4103 1.42725C18.5826 0.545875 17.4028 0 16.1158 0C13.6188 0 11.6086 2.02675 11.6086 4.51137C11.6086 4.86888 11.6388 5.21263 11.7131 5.53988C7.96345 5.357 4.64557 3.55988 2.4167 0.82225C2.02757 1.49738 1.79932 2.27012 1.79932 3.102C1.79932 4.664 2.6037 6.04862 3.8027 6.85025C3.07807 6.8365 2.3672 6.62613 1.76495 6.29475C1.76495 6.3085 1.76495 6.32638 1.76495 6.34425C1.76495 8.536 3.32832 10.3565 5.37845 10.7759C5.01132 10.8763 4.6112 10.9244 4.19595 10.9244C3.9072 10.9244 3.6157 10.9079 3.34207 10.8474C3.92645 12.6335 5.5847 13.9466 7.55645 13.9893C6.02195 15.1896 4.07357 15.9129 1.96432 15.9129C1.59445 15.9129 1.2397 15.8964 0.884949 15.851C2.88282 17.1394 5.25057 17.875 7.80395 17.875C16.1034 17.875 20.6409 11 20.6409 5.04075C20.6409 4.84137 20.6341 4.64887 20.6244 4.45775C21.5196 3.8225 22.2717 3.02913 22.8849 2.11613Z"
-                    fill="currentColor"
-                  />
-                </svg>
-              </a>
-            </li>
-            <li>
-              <a href="javascript:">
+              <a href="http://instagram.com/fuboruindonesia" target="_blank" rel="noopener noreferrer">
                 <svg
                   width="23"
                   height="22"
@@ -71,7 +54,7 @@
         </div>
         <div>
           <ul class="flex flex-col gap-3 font-bold">
-            <li class="mb-3 text-lg font-extrabold text-black dark:text-white">Quick Menu</li>
+            <li class="mb-3 text-lg font-extrabold text-black dark:text-white">Menu</li>
             <li>
               <router-link to="/" class="inline-block transition hover:scale-110 hover:text-secondary">Beranda</router-link>
             </li>
@@ -91,12 +74,13 @@
         </div>
         <div>
           <ul class="flex flex-col gap-3 font-bold">
-            <li class="mb-3 text-lg font-extrabold text-black dark:text-white">Information</li>
+            <li class="mb-3 text-lg font-extrabold text-black dark:text-white">Informasi</li>
             <li>Jl Raya Trosobo Komplek Industri Kav. III-V, Taman, Sidoarjo Jawa Timur, Indonesia</li>
             <li>
               <a href="tel:+6231-8971669" class="inline-block transition hover:scale-110 hover:text-secondary">+6231-8971669 / 8970602</a>
               <a href="tel:+62811-1111-1983" class="inline-block transition hover:scale-110 hover:text-secondary">+62811-1111-1983 (Whatsapp)</a>
             </li>
+            <li>info@fuboru.co.id</li>
           </ul>
         </div>
       </div>
