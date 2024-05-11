@@ -59,16 +59,16 @@
               <router-link to="/" class="inline-block transition hover:scale-110 hover:text-secondary">Beranda</router-link>
             </li>
             <li>
-              <router-link to="/" class="inline-block transition hover:scale-110 hover:text-secondary">Tentang Kami</router-link>
+              <router-link to="#tentang-kami" class="inline-block transition hover:scale-110 hover:text-secondary">Tentang Kami</router-link>
             </li>
             <li>
-              <router-link to="/" class="inline-block transition hover:scale-110 hover:text-secondary">Produk</router-link>
+              <router-link to="#produk" class="inline-block transition hover:scale-110 hover:text-secondary">Produk</router-link>
             </li>
             <li>
-              <router-link to="/" class="inline-block transition hover:scale-110 hover:text-secondary">Jaminan Kualitas</router-link>
+              <router-link to="#jaminan-kualitas" class="inline-block transition hover:scale-110 hover:text-secondary">Jaminan Kualitas</router-link>
             </li>
             <li>
-              <router-link to="/" class="inline-block transition hover:scale-110 hover:text-secondary">Kontak</router-link>
+              <router-link to="#kontak" class="inline-block transition hover:scale-110 hover:text-secondary">Kontak</router-link>
             </li>
           </ul>
         </div>

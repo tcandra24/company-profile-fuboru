@@ -1,0 +1,159 @@
+<template>
+  <div>
+    <template v-if="type.toLowerCase() === 'creative-agency'">
+      <swiper
+        class="mt-12"
+        :loop="true"
+        slidesPerView="auto"
+        :spaceBetween="30"
+        :speed="1000"
+        :autoplay="{
+          delay: 3000,
+          disableOnInteraction: false,
+        }"
+        :navigation="{
+          nextEl: '.client-swiper-button-next',
+          prevEl: '.client-swiper-button-prev',
+        }"
+        :modules="[Autoplay, Navigation]"
+        :breakpoints="{
+          320: {
+            slidesPerView: 1,
+          },
+          600: {
+            slidesPerView: 2,
+          },
+        }"
+        :dir="store.direction === 'rtl' ? 'rtl' : 'ltr'"
+        :key="store.direction === 'rtl' ? 'true' : 'false'"
+      >
+        <swiper-slide v-for="feedback in feedbacks" :key="feedback.id">
+          <div class="border-2 border-gray/10 bg-gray/[0.06] p-[30px]">
+            <p class="font-semibold leading-7">{{ feedback.message }}</p>
+            <div class="mt-12 flex items-center gap-2.5">
+              <div class="overflow-hidden rounded-full border border-[rgba(125,132,150,0.2)] bg-gradient-to-t from-[rgba(125,132,150,0.1)] to-[125,132,150]">
+                <img :src="feedback.thumbnail" class="w-12 h-12" :alt="feedback.name" />
+              </div>
+              <div>
+                <h5 class="text-lg font-bold text-black dark:text-white">{{ feedback.name }}</h5>
+                <p class="mt-[2px] text-sm font-bold italic">{{ feedback.role }}</p>
+              </div>
+            </div>
+          </div>
+        </swiper-slide>
+      </swiper>
+      <div class="mt-5 flex items-center justify-end gap-2.5">
+        <button
+          type="button"
+          class="client-swiper-button-prev flex h-9 w-[38px] items-center justify-center bg-black duration-200 hover:bg-secondary rtl:rotate-y-180 dark:bg-gray-dark dark:hover:bg-secondary"
+        >
+          <svg width="19" height="16" viewBox="0 0 19 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M8 2L2 8L8 14" stroke="white" stroke-width="2" stroke-linecap="square" />
+            <path d="M18 8H4" stroke="white" stroke-width="2" stroke-linecap="square" />
+          </svg>
+        </button>
+        <button
+          type="button"
+          class="client-swiper-button-next flex h-9 w-[38px] items-center justify-center bg-black duration-200 hover:bg-secondary rtl:rotate-y-180 dark:bg-gray-dark dark:hover:bg-secondary"
+        >
+          <svg width="19" height="16" viewBox="0 0 19 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M11 2L17 8L11 14" stroke="white" stroke-width="2" stroke-linecap="square" />
+            <path d="M1 8H15" stroke="white" stroke-width="2" stroke-linecap="square" />
+          </svg>
+        </button>
+      </div>
+    </template>
+    <template v-else>
+      <swiper
+        :loop="true"
+        slidesPerView="auto"
+        :spaceBetween="30"
+        :speed="1000"
+        :autoplay="{
+          delay: 3000,
+          disableOnInteraction: false,
+        }"
+        :navigation="{
+          prevEl: '.feedback-slider-button-prev',
+          nextEl: '.feedback-slider-button-next',
+        }"
+        :modules="[Navigation, Autoplay]"
+        :dir="store.direction === 'rtl' ? 'rtl' : 'ltr'"
+        :key="store.direction === 'rtl' ? 'true' : 'false'"
+      >
+        <swiper-slide v-for="feedback in feedbacks" :key="feedback.id">
+          <div class="flex justify-between gap-7 p-7">
+            <div class="flex items-center gap-2.5">
+              <div
+                class="flex h-14 w-14 items-end justify-center overflow-hidden rounded-full border border-[rgba(125,132,150,0.2)] bg-gradient-to-t from-[rgba(125,132,150,0.1)] to-[125,132,150]"
+              >
+                <img :src="feedback.thumbnail" alt="" class="h-full w-full object-cover" />
+              </div>
+              <div>
+                <h5 class="text-lg font-bold text-black dark:text-white">{{ feedback.name }}</h5>
+                <p class="text-sm font-bold italic">{{ feedback.role }}</p>
+              </div>
+            </div>
+          </div>
+          <div class="border border-gray/10"></div>
+          <div class="p-7">
+            <h3 class="text-lg font-bold italic text-black dark:text-white">new bungalow house</h3>
+            <p class="mt-4 text-base font-semibold leading-7">
+              {{ feedback.message }}
+            </p>
+            <div class="text-right">
+              <p class="mt-7 inline-flex bg-[rgba(8,17,31,0.06)] p-2 text-sm font-semibold text-black dark:text-white">San Diego, California</p>
+            </div>
+          </div>
+        </swiper-slide>
+      </swiper>
+      <div class="absolute top-7 z-10 flex gap-2.5 ltr:right-7 rtl:left-7">
+        <a
+          href="javascript:"
+          class="feedback-slider-button-prev flex h-8 w-8 items-center justify-center bg-[rgba(8,17,31,0.08)] text-black duration-200 after:hidden hover:bg-black hover:text-white dark:bg-white/80 dark:hover:bg-secondary"
+        >
+          <svg width="9" height="18" viewBox="0 0 9 18" fill="none" xmlns="http://www.w3.org/2000/svg" class="rtl:rotate-180">
+            <path d="M7 16L1 9L2.5 7.25M7 2L5 4.33333" stroke="currentcolor" stroke-width="2" stroke-linecap="square" stroke-linejoin="round"></path>
+          </svg>
+        </a>
+        <a
+          href="javascript:"
+          class="feedback-slider-button-next flex h-8 w-8 items-center justify-center bg-[rgba(8,17,31,0.08)] text-black duration-200 after:hidden hover:bg-black hover:text-white dark:bg-white/80 dark:hover:bg-secondary"
+        >
+          <svg width="9" height="18" viewBox="0 0 9 18" fill="none" xmlns="http://www.w3.org/2000/svg" class="rtl:rotate-180">
+            <path d="M2 2L4 4.33333M2 16L8 9L6.5 7.25" stroke="currentcolor" stroke-width="2" stroke-linecap="square" stroke-linejoin="round"></path>
+          </svg>
+        </a>
+      </div>
+    </template>
+  </div>
+</template>
+<script setup>
+  import 'swiper/css/navigation';
+  import 'swiper/css';
+
+  import { Swiper, SwiperSlide } from 'swiper/vue';
+  import { Autoplay, Navigation } from 'swiper/modules';
+  import { useAppStore } from '@/stores/index';
+  const store = useAppStore();
+  defineProps({
+    type: {
+      type: String,
+      default: 'common',
+    },
+    feedbacks: {
+      type: Array,
+      default: () => {
+        return [
+          {
+            id: 1,
+            name: 'amelia smith',
+            role: 'customer',
+            thumbnail: '/assets/images/realestate/customer-avatar.svg',
+            message: ` “It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.”`,
+          },
+        ];
+      },
+    },
+  });
+</script>

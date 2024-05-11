@@ -1,6 +1,6 @@
 <script setup>
   import { ref } from 'vue';
-  import Testimonial from '@/components/Testimonial.vue';
+  import ClientSlider from '@/components/ClientSlider.vue';
   import Faq from '@/components/Faq.vue';
   import Modal from '@/components/Modal.vue';
   import { useAppStore } from '@/stores/index';
@@ -8,6 +8,49 @@
 
   const activeTab = ref('all');
   const dialog = ref(null);
+
+  const feedbacks = ref([
+    {
+      id: 1,
+      name: 'Windya Motor',
+      role: 'Denpasar',
+      thumbnail: '/assets/images/testimonial/testi-1.jpg',
+      message:
+        'Produk-produk fuboru memang sangat berkualitas. Ada label expired date sebagai jaminannya, sehingga kami tidak was-was dalam menjual produk ke konsumen.',
+    },
+    {
+      id: 2,
+      name: 'Makmur Jaya Motor',
+      role: 'Pekanbaru',
+      thumbnail: '/assets/images/testimonial/testi-2.jpg',
+      message:
+        'Gasket nomer 1, ya pasti fuboru. Jaminan kualitas, harga pas dan tentunya sangat direkomendasikan oleh para mekanik. Pelanggan puas, rejeki lancar.',
+    },
+    {
+      id: 3,
+      name: 'Indra Surya Motor',
+      role: 'Banjarmasin',
+      thumbnail: '/assets/images/testimonial/testi-3.jpg',
+      message:
+        'Kami sudah lama memasarkan produk-produk fuboru di Banjarmasin. Gasket & Lem Gasket Fuboru memang sangat mantap dan tiada banding. Customer kami sangat puas dan tidak pernah komplain. Semoga fuboru tambah jaya !!',
+    },
+    {
+      id: 4,
+      name: 'Hasil Abadi Motor',
+      role: 'Jawa Timur',
+      thumbnail: '/assets/images/testimonial/testi-4.jpg',
+      message:
+        'Produk fuboru selalu menjadi rekomendasi para mekanik kami. Selain gasketnya yang sangat presisi, produk-produk sparepart nya juga sangat berkualitas. Harganya sangat kompetitif, awet dan tahan lama',
+    },
+    {
+      id: 5,
+      name: 'Adityo Motor',
+      role: 'Jakarta',
+      thumbnail: '/assets/images/testimonial/testi-5.jpg',
+      message:
+        'Produk-produk fuboru sangat laku di Makassar dan selalu jadi pilihan utama para mekanik. Semenjak menjual produk fuboru, hampir tidak ada konsumen yang komplain. Fuboru memang TOP !!',
+    },
+  ]);
 
   const products = [
     {
@@ -33,7 +76,7 @@
       slug: 'rubber',
       list: [
         {
-          name: 'Karet kopling House',
+          name: 'Karet Kopling House',
           description: 'KKH',
           image: '/assets/images/products/rubber-1.jpg',
           group: 'rubber',
@@ -110,7 +153,7 @@
               <h2 class="text-4xl font-extrabold leading-normal sm:text-5xl lg:text-[70px] lg:leading-[90px]">
                 Simply <span class="italic text-primary">The Best </span>
               </h2>
-              <p class="my-8 text-lg lg:w-[90%]">Official Website PT Fuboru Indonesia - Produsen Suku Cadang Ootomotif & Mesin Statis</p>
+              <p class="my-8 text-lg lg:w-[90%]">Official Website PT Fuboru Indonesia - Produsen Suku Cadang Otomotif & Mesin Statis</p>
               <router-link to="/" class="btn mx-auto mt-2 block w-fit bg-white lg:mx-0 lg:rtl:ml-auto">Baca Selengkapnya</router-link>
             </div>
             <div
@@ -127,7 +170,7 @@
       </div>
     </div>
 
-    <section class="py-10 lg:py-20 aos-init aos-animate" data-aos="fade-up" data-aos-duration="1000" id="tentang-kami">
+    <section class="py-10 lg:py-20" data-aos="fade-up" data-aos-duration="1000" id="tentang-kami">
       <div class="container">
         <div class="flex flex-col gap-7 lg:flex-row">
           <div
@@ -233,6 +276,8 @@
         <div class="grid grid-cols-1 justify-between gap-7 ltr:text-left rtl:text-right aos-init aos-animate" data-aos="fade-up" data-aos-duration="1000">
           <div
             class="group flex gap-6 rounded-[32px] border-2 border-white/[0.1] bg-white py-10 px-6 duration-200 hover:border-secondary hover:bg-secondary/20 dark:bg-transparent dark:bg-gradient-to-b dark:from-white/5 dark:to-transparent"
+            data-aos="fade-right"
+            data-aos-duration="1000"
           >
             <div class="flex-1">
               <h3 class="text-2xl font-extrabold text-gray">Corporate Value</h3>
@@ -253,6 +298,8 @@
           </div>
           <div
             class="group flex gap-6 rounded-[32px] border-2 border-white/[0.1] bg-white py-10 px-6 duration-200 hover:border-secondary hover:bg-secondary/20 dark:bg-transparent dark:bg-gradient-to-b dark:from-white/5 dark:to-transparent"
+            data-aos="fade-left"
+            data-aos-duration="1000"
           >
             <div class="flex-1">
               <h3 class="text-2xl font-extrabold text-gray">Membership</h3>
@@ -277,6 +324,8 @@
           </div>
           <div
             class="group flex gap-6 rounded-[32px] border-2 border-white/[0.1] bg-white py-10 px-6 duration-200 hover:border-secondary hover:bg-secondary/20 dark:bg-transparent dark:bg-gradient-to-b dark:from-white/5 dark:to-transparent"
+            data-aos="fade-right"
+            data-aos-duration="1000"
           >
             <div class="flex-1">
               <h3 class="text-2xl font-extrabold text-gray">Corporate Social Responsibility</h3>
@@ -327,7 +376,7 @@
               class="relative rounded-3xl border border-transparent bg-white drop-shadow-[5px_10px_80px_rgba(119,128,161,0.15)] transition duration-500 hover:border-secondary hover:bg-secondary/20 dark:bg-gray-dark dark:drop-shadow-none"
             >
               <router-link to="/" class="absolute top-0 left-0 h-full w-full"></router-link>
-              <img :src="product.image" alt="project-1" class="h-52 w-full rounded-t-3xl object-cover" />
+              <img :src="product.image" :alt="product.name" class="h-52 w-full rounded-t-3xl object-cover" />
               <div class="p-5 text-sm font-bold">
                 <h6 class="mb-1 text-black dark:text-white">{{ product.name }}</h6>
                 <p>{{ product.description }}</p>
@@ -344,7 +393,7 @@
           <h4>Jaminan Kualitas</h4>
           <h6>Jaminan kualitas fuboru tercermin dari beberapa sertifikasi & patent yang kami peroleh, baik lokal maupun International Patent</h6>
         </div>
-        <div class="grid gap-8 sm:grid-cols-3 lg:grid-cols-5">
+        <div class="grid gap-8 sm:grid-cols-3 lg:grid-cols-5" data-aos="fade-up" data-aos-duration="1000">
           <div class="group cursor-pointer text-center" v-for="(certificate, index) in certificates" :key="index">
             <div class="relative h-[280px] rounded-3xl transition-all duration-500 group-hover:shadow-[0_0_25px_#979797]">
               <img :src="certificate.image" :alt="certificate.name" class="h-full w-full rounded-3xl object-cover object-top" />
@@ -362,7 +411,16 @@
       <faq></faq>
     </section>
 
-    <Testimonial class="py-10 lg:py-[100px]"></Testimonial>
+    <section class="bg-gradient-to-b from-transparent to-white/50 py-12 dark:to-white/[0.02] lg:py-24">
+      <div class="container">
+        <div class="heading text-center">
+          <h4>Komentar</h4>
+          <h6>Komentar-Komentar dari pelanggan puas</h6>
+        </div>
+
+        <ClientSlider :feedbacks="feedbacks" type="creative-agency"></ClientSlider>
+      </div>
+    </section>
 
     <section class="py-14 dark:bg-gray-dark lg:py-[100px]" id="kontak">
       <div class="container">
