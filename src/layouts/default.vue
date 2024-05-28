@@ -90,7 +90,7 @@
   import Header from '@/components/Header.vue';
   import Footer from '@/components/Footer.vue';
 
-  import { useAppStore } from '@/stores/index';
+  import { useAppStore } from '@/stores/app';
   const store = useAppStore();
 
   const showTopButton = ref(false);
@@ -109,3 +109,4 @@
     document.documentElement.scrollTop = 0;
   };
 </script>
+@/stores/app

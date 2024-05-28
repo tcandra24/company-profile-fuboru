@@ -1,17 +1,17 @@
 <template>
   <div class="container">
     <div class="heading text-center">
-      <h4>Frequently Asked <span :class="{ '!text-secondary': type.toLowerCase() === 'restaurent' }">Questions</span></h4>
-      <h6 :class="{ hidden: !showTitle, '!text-secondary': type.toLowerCase() === 'modern-saas' }">Ada pertanyaan? Kami akan membantu anda.</h6>
+      <h4>{{ storeLanguage.section.faq.title[storeLanguage.selected] }}</h4>
+      <h6 :class="{ hidden: !showTitle }">{{ storeLanguage.section.faq.subtitle[storeLanguage.selected] }}</h6>
     </div>
     <div class="mx-auto lg:w-[730px]">
-      <div v-for="(faq, i) in queries" :key="faq.id" class="mt-6 border-0 border-b-2 border-gray/20 bg-transparent">
+      <div v-for="(faq, i) in storeLanguage.section.faq.data" :key="faq.id" class="mt-6 border-0 border-b-2 border-gray/20 bg-transparent">
         <button
           type="button"
           class="relative !flex w-full items-center justify-between gap-2 py-2.5 text-lg font-bold text-black ltr:text-left rtl:text-right dark:text-white"
           @click="accordians === i ? (accordians = null) : (accordians = i)"
         >
-          <div>{{ faq.question }}</div>
+          <div>{{ faq.question[storeLanguage.selected] }}</div>
           <div
             class="grid h-6 w-6 flex-shrink-0 place-content-center rounded-full border-2 border-gray text-gray transition"
             :class="{ '!border-black !text-black dark:!border-white dark:!text-white': accordians === i }"
@@ -33,7 +33,7 @@
           <div class="lg:w-4/5">
             <p class="px-0 pb-5 pt-0 text-sm font-bold leading-[18px] text-gray">
                 <div v-if="!faq.link">
-                    {{ faq.answer }}
+                    {{ faq.answer[storeLanguage.selected] }}
                 </div>
                 <div v-else>
                     <ol>
@@ -52,6 +52,9 @@
 <script setup>
   import { ref } from 'vue';
   import VueCollapsible from 'vue-height-collapsible/vue3';
+  import { useLanguageStore } from '@/stores/language';
+
+  const storeLanguage = useLanguageStore();
 
   defineProps({
     showTitle: {
@@ -62,47 +65,50 @@
       type: String,
       default: 'faq',
     },
-    queries: {
-      type: Array,
-      default: () => {
-        return [
-          {
-            id: 1,
-            question: 'Apakah kelebihan produk fuboru dibanding merk lain ?',
-            answer: `Bahan baku Fuboru telah memenuhi standart JIS (Japanese Industrial Standards), Pengujian yang dilakukan telah mengikuti standart ASTM (American Standard for Testing Materials) dan Proses produksi mengikuti standart proses manufaktur dari Q-SEAL`,
-          },
-          {
-            id: 2,
-            question: 'Bagaimana Fuboru menjamin produk nya layak untuk digunakan ?',
-            answer: `Setiap produk tercantum Expired Date untuk memastikan bahwa produk masih baik, Terdapat Nama, Alamat, No Telpon PT Fuboru Indonesia sehingga konsumen dapat langsung menghubungi Call Center jika ingin mendapatkan informasi lebih detail tentang produk`,
-          },
-          {
-            id: 3,
-            question: 'Produk untuk apa saja yang diproduksi oleh Fuboru ?',
-            answer: `Kendaraan Roda-2 / Roda-3 mulai dari motor lama (misal : Honda C-70, Honda CB, Yamaha V-75, Yamaha L2S, Suzuki RGR 150, Vespa Super / PS/ PX, dll) hingga motor terbaru (misal : Yamaha NMAX, Honda Supra X 125 New, Honda PCX, dll), untuk Mesin Statis ( misal : Dongfeng, Kubota, Yanmar, Mitsubishi, Honda, Yamaha)`,
-          },
-          {
-            id: 4,
-            question: 'Apakah kelebihan produk LSG (Lem Special Gasket) Fuboru ?',
-            answer: `Mengandung bahan aktif Aluminium Micronized yang berfungsi untuk menutup goresan-goresan pada permukaan mesin yang dapat menyebabkan kebocoran, Saat motor di service area yang sebelumnya diberi LSG Fuboru mudah dilepas & dibersihkan, sehingga tidak perlu harus di korek / digosok yang beresiko menimbulkan goresan`,
-          },
-          {
-            id: 5,
-            question: 'Bagaimana cara mendapatkan produk Fuboru ?',
-            answer: `Produk Fuboru telah tersebar di sekitar 15.000 jaringan customer di seluruh Indonesia (baik toko maupun bengkel) dan anda dapat menghubungi call center / kantor pusat PT Fuboru Indonesia seperti yang tertera di Contact website / tertera di setiap kemasan produk Fuboru`,
-          },
-          {
-            id: 6,
-            question: 'Apakah produk Fuboru dapat dibeli secara online ?',
-            answer: [
-                'https://tokopedia.com/fundo',
-                'https://shopee.co.id/fundo_shop',
-            ],
-            link: true
-          },
-        ];
-      },
+    language: {
+      type: String
     },
+    // queries: {
+    //   type: Object,
+    //   // default: () => {
+    //   //   return [
+    //   //     {
+    //   //       id: 1,
+    //   //       question: 'Apakah kelebihan produk fuboru dibanding merk lain ?',
+    //   //       answer: `Bahan baku Fuboru telah memenuhi standart JIS (Japanese Industrial Standards), Pengujian yang dilakukan telah mengikuti standart ASTM (American Standard for Testing Materials) dan Proses produksi mengikuti standart proses manufaktur dari Q-SEAL`,
+    //   //     },
+    //   //     {
+    //   //       id: 2,
+    //   //       question: 'Bagaimana Fuboru menjamin produk nya layak untuk digunakan ?',
+    //   //       answer: `Setiap produk tercantum Expired Date untuk memastikan bahwa produk masih baik, Terdapat Nama, Alamat, No Telpon PT Fuboru Indonesia sehingga konsumen dapat langsung menghubungi Call Center jika ingin mendapatkan informasi lebih detail tentang produk`,
+    //   //     },
+    //   //     {
+    //   //       id: 3,
+    //   //       question: 'Produk untuk apa saja yang diproduksi oleh Fuboru ?',
+    //   //       answer: `Kendaraan Roda-2 / Roda-3 mulai dari motor lama (misal : Honda C-70, Honda CB, Yamaha V-75, Yamaha L2S, Suzuki RGR 150, Vespa Super / PS/ PX, dll) hingga motor terbaru (misal : Yamaha NMAX, Honda Supra X 125 New, Honda PCX, dll), untuk Mesin Statis ( misal : Dongfeng, Kubota, Yanmar, Mitsubishi, Honda, Yamaha)`,
+    //   //     },
+    //   //     {
+    //   //       id: 4,
+    //   //       question: 'Apakah kelebihan produk LSG (Lem Special Gasket) Fuboru ?',
+    //   //       answer: `Mengandung bahan aktif Aluminium Micronized yang berfungsi untuk menutup goresan-goresan pada permukaan mesin yang dapat menyebabkan kebocoran, Saat motor di service area yang sebelumnya diberi LSG Fuboru mudah dilepas & dibersihkan, sehingga tidak perlu harus di korek / digosok yang beresiko menimbulkan goresan`,
+    //   //     },
+    //   //     {
+    //   //       id: 5,
+    //   //       question: 'Bagaimana cara mendapatkan produk Fuboru ?',
+    //   //       answer: `Produk Fuboru telah tersebar di sekitar 15.000 jaringan customer di seluruh Indonesia (baik toko maupun bengkel) dan anda dapat menghubungi call center / kantor pusat PT Fuboru Indonesia seperti yang tertera di Contact website / tertera di setiap kemasan produk Fuboru`,
+    //   //     },
+    //   //     {
+    //   //       id: 6,
+    //   //       question: 'Apakah produk Fuboru dapat dibeli secara online ?',
+    //   //       answer: [
+    //   //           'https://tokopedia.com/fundo',
+    //   //           'https://shopee.co.id/fundo_shop',
+    //   //       ],
+    //   //       link: true
+    //   //     },
+    //   //   ];
+    //   // },
+    // },
   });
   const accordians = ref(0);
 </script>

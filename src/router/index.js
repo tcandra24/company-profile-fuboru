@@ -1,5 +1,5 @@
 import { createRouter, createWebHistory } from 'vue-router';
-import { useAppStore } from '@/stores/index';
+import { useAppStore } from '@/stores/app';
 import { nextTick } from 'vue';
 
 const routes = [

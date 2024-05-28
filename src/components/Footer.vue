@@ -1,3 +1,9 @@
+<script setup>
+  import { useLanguageStore } from '@/stores/language';
+
+  const storeLanguage = useLanguageStore();
+</script>
+
 <template>
   <footer class="mt-auto bg-white dark:bg-transparent dark:bg-gradient-to-b dark:from-white/[0.03] dark:to-transparent">
     <div class="container">
@@ -55,27 +61,17 @@
         <div>
           <ul class="flex flex-col gap-3 font-bold">
             <li class="mb-3 text-lg font-extrabold text-black dark:text-white">Menu</li>
-            <li>
-              <router-link to="/" class="inline-block transition hover:scale-110 hover:text-secondary">Beranda</router-link>
-            </li>
-            <li>
-              <router-link to="#tentang-kami" class="inline-block transition hover:scale-110 hover:text-secondary">Tentang Kami</router-link>
-            </li>
-            <li>
-              <router-link to="#produk" class="inline-block transition hover:scale-110 hover:text-secondary">Produk</router-link>
-            </li>
-            <li>
-              <router-link to="#jaminan-kualitas" class="inline-block transition hover:scale-110 hover:text-secondary">Jaminan Kualitas</router-link>
-            </li>
-            <li>
-              <router-link to="#kontak" class="inline-block transition hover:scale-110 hover:text-secondary">Kontak</router-link>
+            <li v-for="(menu, index) in storeLanguage.menus" :key="index">
+              <router-link :to="menu.to" class="inline-block transition hover:scale-110 hover:text-secondary">
+                {{ menu.name[storeLanguage.selected] }}
+              </router-link>
             </li>
           </ul>
         </div>
         <div>
           <ul class="flex flex-col gap-3 font-bold">
             <li class="mb-3 text-lg font-extrabold text-black dark:text-white">Informasi</li>
-            <li>Jl Raya Trosobo Komplek Industri Kav. III-V, Taman, Sidoarjo Jawa Timur, Indonesia</li>
+            <li class="text-justify">Jl Raya Trosobo Komplek Industri Kav. III-V, Taman, Sidoarjo Jawa Timur, Indonesia</li>
             <li>
               <a href="tel:+6231-8971669" class="inline-block transition hover:scale-110 hover:text-secondary">+6231-8971669 / 8970602</a>
               <a href="tel:+62811-1111-1983" class="inline-block transition hover:scale-110 hover:text-secondary">+62811-1111-1983 (Whatsapp)</a>

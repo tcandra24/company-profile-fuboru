@@ -27,7 +27,7 @@
         :dir="store.direction === 'rtl' ? 'rtl' : 'ltr'"
         :key="store.direction === 'rtl' ? 'true' : 'false'"
       >
-        <swiper-slide v-for="feedback in feedbacks" :key="feedback.id">
+        <swiper-slide v-for="feedback in storeLanguage.section.comment.data" :key="feedback.id">
           <div class="border-2 border-gray/10 bg-gray/[0.06] p-[30px]">
             <p class="font-semibold leading-7">{{ feedback.message }}</p>
             <div class="mt-12 flex items-center gap-2.5">
@@ -134,26 +134,30 @@
 
   import { Swiper, SwiperSlide } from 'swiper/vue';
   import { Autoplay, Navigation } from 'swiper/modules';
-  import { useAppStore } from '@/stores/index';
+  import { useAppStore } from '@/stores/app';
+  import { useLanguageStore } from '@/stores/language';
+
   const store = useAppStore();
+  const storeLanguage = useLanguageStore();
+
   defineProps({
     type: {
       type: String,
       default: 'common',
     },
-    feedbacks: {
-      type: Array,
-      default: () => {
-        return [
-          {
-            id: 1,
-            name: 'amelia smith',
-            role: 'customer',
-            thumbnail: '/assets/images/realestate/customer-avatar.svg',
-            message: ` “It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.”`,
-          },
-        ];
-      },
-    },
+    // feedbacks: {
+    //   type: Array,
+    //   default: () => {
+    //     return [
+    //       {
+    //         id: 1,
+    //         name: 'amelia smith',
+    //         role: 'customer',
+    //         thumbnail: '/assets/images/realestate/customer-avatar.svg',
+    //         message: ` “It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.”`,
+    //       },
+    //     ];
+    //   },
+    // },
   });
 </script>

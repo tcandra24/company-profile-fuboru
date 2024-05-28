@@ -22,22 +22,20 @@
               </button>
             </div>
             <ul @click="showMenu = false">
-              <li><router-link to="/">Beranda</router-link></li>
-              <li>
-                <router-link to="#tentang-kami">Tentang Kami</router-link>
-              </li>
-              <li>
-                <router-link to="#produk">Produk</router-link>
-              </li>
-              <li>
-                <router-link to="#jaminan-kualitas">Jaminan Kualitas</router-link>
-              </li>
-              <li>
-                <router-link to="#kontak">Kontak</router-link>
+              <li v-for="(menu, index) in storeLanguage.menus" :key="index">
+                <router-link :to="menu.to">{{ menu.name[storeLanguage.selected] }}</router-link>
               </li>
             </ul>
           </div>
           <ul class="flex items-center gap-5 ltr:pr-5 rtl:pl-5 ltr:lg:pl-5 ltr:lg:pr-0 rtl:lg:pr-5 rtl:lg:pl-0">
+            <li class="flex flex-row gap-x-2">
+              <button @click="storeLanguage.toggleLanguage('id')" type="button" class="flex h-7 w-7 items-center text-white">
+                <img src="/assets/images/flag-indonesia.svg" alt="Indonesia" />
+              </button>
+              <button @click="storeLanguage.toggleLanguage('en')" type="button" class="flex h-7 w-7 items-center text-white">
+                <img src="/assets/images/flag-english.svg" alt="English" />
+              </button>
+            </li>
             <li>
               <button
                 type="button"
@@ -106,8 +104,10 @@
 </template>
 <script setup>
   import { ref } from 'vue';
-  import { useAppStore } from '@/stores/index';
+  import { useAppStore } from '@/stores/app';
+  import { useLanguageStore } from '@/stores/language';
   const store = useAppStore();
+  const storeLanguage = useLanguageStore();
   const showMenu = ref(false);
   // Mobile menu js
   const toggleMenu = () => {
@@ -118,3 +118,4 @@
     }
   };
 </script>
+@/stores/app
