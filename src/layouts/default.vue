@@ -12,7 +12,7 @@
         viewBox="0 0 100 100"
         preserveAspectRatio="xMidYMid"
       >
-        <circle cx="50" cy="50" r="0" fill="none" stroke="#47bdff" stroke-width="4">
+        <circle cx="50" cy="50" r="0" fill="none" stroke="#EFD700" stroke-width="4">
           <animate
             attributeName="r"
             repeatCount="indefinite"
@@ -34,7 +34,7 @@
             begin="0s"
           ></animate>
         </circle>
-        <circle cx="50" cy="50" r="0" fill="none" stroke="#b476e5" stroke-width="4">
+        <circle cx="50" cy="50" r="0" fill="none" stroke="#4C4747" stroke-width="4">
           <animate
             attributeName="r"
             repeatCount="indefinite"

@@ -33,8 +33,8 @@ export default {
       current: 'currentColor',
       white: '#ffffff',
       black: '#08111F',
-      primary: '#FEE602',
-      secondary: '#EE2224',
+      primary: '#EFD700',
+      secondary: '#4C4747',
       gray: {
         DEFAULT: '#7780A1',
         dark: '#1C2331',
