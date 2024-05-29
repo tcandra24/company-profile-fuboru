@@ -32,7 +32,7 @@
             <p class="font-semibold leading-7">{{ feedback.message }}</p>
             <div class="mt-12 flex items-center gap-2.5">
               <div class="overflow-hidden rounded-full border border-[rgba(125,132,150,0.2)] bg-gradient-to-t from-[rgba(125,132,150,0.1)] to-[125,132,150]">
-                <img :src="feedback.thumbnail" class="w-12 h-12" :alt="feedback.name" />
+                <img v-lazy="{ src: feedback.thumbnail, loading: LoadingImg, error: LoadingImg }" class="w-12 h-12" :alt="feedback.name" />
               </div>
               <div>
                 <h5 class="text-lg font-bold text-black dark:text-white">{{ feedback.name }}</h5>
@@ -136,6 +136,8 @@
   import { Autoplay, Navigation } from 'swiper/modules';
   import { useAppStore } from '@/stores/app';
   import { useLanguageStore } from '@/stores/language';
+
+  import LoadingImg from '@/assets/images/loading_img.webp';
 
   const store = useAppStore();
   const storeLanguage = useLanguageStore();
