@@ -29,9 +29,9 @@
                 Simply <span class="italic text-primary">The Best </span>
               </h2>
               <p class="my-8 text-lg lg:w-[90%]">{{ storeLanguage.heroDescription[storeLanguage.selected] }}</p>
-              <router-link to="/" class="btn mx-auto mt-2 block w-fit bg-white lg:mx-0 lg:rtl:ml-auto">{{
-                storeLanguage.heroButton[storeLanguage.selected]
-              }}</router-link>
+              <router-link to="#tentang-kami" class="btn mx-auto mt-2 block w-fit bg-white lg:mx-0 lg:rtl:ml-auto">
+                {{ storeLanguage.heroButton[storeLanguage.selected] }}
+              </router-link>
             </div>
             <div
               class="top-[20px] mx-auto mt-5 mb-2 w-auto ltr:-right-[170px] rtl:-left-[150px] md:w-[540px] lg:absolute lg:mb-0 lg:mt-0 xl:w-[650px]"
