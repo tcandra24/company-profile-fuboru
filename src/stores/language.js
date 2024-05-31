@@ -40,6 +40,7 @@ import Var2 from '@/assets/images/products/var-2.webp';
 import Var3 from '@/assets/images/products/var-3.webp';
 import Var4 from '@/assets/images/products/var-4.webp';
 import Var5 from '@/assets/images/products/var-5.webp';
+import Var6 from '@/assets/images/products/var-6.webp';
 
 import Cert1 from '@/assets/images/certificates/team-1.webp';
 import Cert2 from '@/assets/images/certificates/team-2.webp';
@@ -94,8 +95,14 @@ export const useLanguageStore = defineStore('language', {
       },
     ],
     heroDescription: {
-      id: 'Official Website PT Fuboru Indonesia - Produsen Suku Cadang Otomotif & Mesin Statis',
-      en: 'Official Website PT Fuboru Indonesia - Parts Of Produsen Automotive And Machine Statis',
+      title: {
+        id: 'Website Resmi PT Fuboru Indonesia',
+        en: 'Official Website PT Fuboru Indonesia',
+      },
+      subtitle: {
+        id: 'Produsen Suku Cadang Otomotif & Mesin Statis',
+        en: 'Parts Of Produsen Automotive And Machine Statis',
+      },
     },
     heroButton: {
       id: 'Baca Selengkapnya',
@@ -501,6 +508,12 @@ export const useLanguageStore = defineStore('language', {
                 name: 'Speed Bond',
                 description: 'Lem Cair Ekstra',
                 image: Var5,
+                group: 'variousproducts',
+              },
+              {
+                name: 'Spion',
+                description: 'Spion Motor',
+                image: Var6,
                 group: 'variousproducts',
               },
             ],

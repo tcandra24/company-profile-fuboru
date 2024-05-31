@@ -1,5 +1,7 @@
 <script setup>
   import { ref } from 'vue';
+  import VueEasyLightbox from 'vue-easy-lightbox';
+
   import ClientSlider from '@/components/ClientSlider.vue';
   import Faq from '@/components/Faq.vue';
   import Modal from '@/components/Modal.vue';
@@ -14,6 +16,16 @@
 
   const activeTab = ref('all');
   const dialog = ref(null);
+
+  const visible = ref(false);
+  const indexImg = ref(null);
+  const product_images = ref(
+    storeLanguage.productItem.map((element) => {
+      return {
+        src: element.image,
+      };
+    }),
+  );
 </script>
 
 <template>
@@ -28,7 +40,11 @@
               <h2 class="text-4xl font-extrabold leading-normal sm:text-5xl lg:text-[70px] lg:leading-[90px]">
                 Simply <span class="italic text-primary">The Best </span>
               </h2>
-              <p class="my-8 text-lg lg:w-[90%]">{{ storeLanguage.heroDescription[storeLanguage.selected] }}</p>
+              <p class="my-8 text-lg lg:w-[90%]">
+                {{ storeLanguage.heroDescription.title[storeLanguage.selected] }}
+                <br />
+                {{ storeLanguage.heroDescription.subtitle[storeLanguage.selected] }}
+              </p>
               <router-link to="#tentang-kami" class="btn mx-auto mt-2 block w-fit bg-white lg:mx-0 lg:rtl:ml-auto">
                 {{ storeLanguage.heroButton[storeLanguage.selected] }}
               </router-link>
@@ -187,7 +203,15 @@
             <div
               class="relative rounded-3xl border border-transparent bg-white drop-shadow-[5px_10px_80px_rgba(119,128,161,0.15)] transition duration-500 hover:border-secondary hover:bg-secondary/20 dark:bg-gray-dark dark:drop-shadow-none"
             >
-              <router-link to="/" class="absolute top-0 left-0 h-full w-full"></router-link>
+              <a
+                href="javascript:"
+                data-fancybox="gallery"
+                @click="
+                  visible = true;
+                  indexImg = index;
+                "
+                class="absolute top-0 left-0 h-full w-full"
+              ></a>
               <img v-lazy="{ src: product.image, loading: LoadingImg, error: LoadingImg }" :alt="product.name" class="h-52 w-full rounded-t-3xl object-cover" />
               <div class="p-5 text-sm font-bold">
                 <h6 class="mb-1 text-black dark:text-white">{{ product.name }}</h6>
@@ -198,6 +222,18 @@
         </div>
       </div>
     </section>
+
+    <vue-easy-lightbox
+      :visible="visible"
+      :imgs="product_images"
+      :index="indexImg"
+      moveDisabled
+      loop
+      @hide="
+        indexImg = null;
+        visible = false;
+      "
+    ></vue-easy-lightbox>
 
     <section class="bg-gradient-to-b from-white/60 to-transparent py-10 dark:from-white/[0.02] lg:py-[100px]" id="jaminan-kualitas">
       <div class="container">
