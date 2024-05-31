@@ -1,57 +1,57 @@
 import { defineStore, acceptHMRUpdate } from 'pinia';
-import Gasket4 from '@/assets/images/products/gasket-4.jpg';
-import Gasket1 from '@/assets/images/products/gasket-1.jpg';
-import Gasket2 from '@/assets/images/products/gasket-2.jpg';
-import Gasket3 from '@/assets/images/products/gasket-3.jpg';
+import Gasket4 from '@/assets/images/products/gasket-4.webp';
+import Gasket1 from '@/assets/images/products/gasket-1.webp';
+import Gasket2 from '@/assets/images/products/gasket-2.webp';
+import Gasket3 from '@/assets/images/products/gasket-3.webp';
 
-import Rubber1 from '@/assets/images/products/rubber-1.jpg';
-import Rubber2 from '@/assets/images/products/rubber-2.jpg';
-import Rubber3 from '@/assets/images/products/rubber-3.jpg';
-import Rubber4 from '@/assets/images/products/rubber-4.jpg';
+import Rubber1 from '@/assets/images/products/rubber-1.webp';
+import Rubber2 from '@/assets/images/products/rubber-2.webp';
+import Rubber3 from '@/assets/images/products/rubber-3.webp';
+import Rubber4 from '@/assets/images/products/rubber-4.webp';
 
-import Spare3 from '@/assets/images/products/spare-3.png';
-import Spare4 from '@/assets/images/products/spare-4.png';
-import Spare1 from '@/assets/images/products/spare-1.jpg';
-import Spare2 from '@/assets/images/products/spare-2.jpg';
-import Spare5 from '@/assets/images/products/spare-5.jpg';
-import Spare6 from '@/assets/images/products/spare-6.jpg';
-import Spare7 from '@/assets/images/products/spare-7.jpg';
-import Spare8 from '@/assets/images/products/spare-8.jpg';
-import Spare9 from '@/assets/images/products/spare-9.jpg';
-import Spare10 from '@/assets/images/products/spare-10.jpg';
+import Spare3 from '@/assets/images/products/spare-3.webp';
+import Spare4 from '@/assets/images/products/spare-4.webp';
+import Spare1 from '@/assets/images/products/spare-1.webp';
+import Spare2 from '@/assets/images/products/spare-2.webp';
+import Spare5 from '@/assets/images/products/spare-5.webp';
+import Spare6 from '@/assets/images/products/spare-6.webp';
+import Spare7 from '@/assets/images/products/spare-7.webp';
+import Spare8 from '@/assets/images/products/spare-8.webp';
+import Spare9 from '@/assets/images/products/spare-9.webp';
+import Spare10 from '@/assets/images/products/spare-10.webp';
 
-import Elec1 from '@/assets/images/products/elec-1.jpg';
-import Elec2 from '@/assets/images/products/elec-2.jpg';
-import Elec3 from '@/assets/images/products/elec-3.jpg';
-import Elec4 from '@/assets/images/products/elec-4.jpg';
-import Elec5 from '@/assets/images/products/elec-5.jpg';
-import Elec6 from '@/assets/images/products/elec-6.jpg';
-import Elec7 from '@/assets/images/products/elec-7.jpg';
+import Elec1 from '@/assets/images/products/elec-1.webp';
+import Elec2 from '@/assets/images/products/elec-2.webp';
+import Elec3 from '@/assets/images/products/elec-3.webp';
+import Elec4 from '@/assets/images/products/elec-4.webp';
+import Elec5 from '@/assets/images/products/elec-5.webp';
+import Elec6 from '@/assets/images/products/elec-6.webp';
+import Elec7 from '@/assets/images/products/elec-7.webp';
 
-import Ms1 from '@/assets/images/products/ms-1.jpg';
-import Ms2 from '@/assets/images/products/ms-2.jpg';
-import Ms3 from '@/assets/images/products/ms-3.jpg';
-import Ms4 from '@/assets/images/products/ms-4.jpg';
-import Ms5 from '@/assets/images/products/ms-5.jpg';
-import Ms6 from '@/assets/images/products/ms-6.jpg';
+import Ms1 from '@/assets/images/products/ms-1.webp';
+import Ms2 from '@/assets/images/products/ms-2.webp';
+import Ms3 from '@/assets/images/products/ms-3.webp';
+import Ms4 from '@/assets/images/products/ms-4.webp';
+import Ms5 from '@/assets/images/products/ms-5.webp';
+import Ms6 from '@/assets/images/products/ms-6.webp';
 
-import Var1 from '@/assets/images/products/var-1.jpg';
-import Var2 from '@/assets/images/products/var-2.jpg';
-import Var3 from '@/assets/images/products/var-3.jpg';
-import Var4 from '@/assets/images/products/var-4.jpg';
-import Var5 from '@/assets/images/products/var-5.jpg';
+import Var1 from '@/assets/images/products/var-1.webp';
+import Var2 from '@/assets/images/products/var-2.webp';
+import Var3 from '@/assets/images/products/var-3.webp';
+import Var4 from '@/assets/images/products/var-4.webp';
+import Var5 from '@/assets/images/products/var-5.webp';
 
-import Cert1 from '@/assets/images/certificates/team-1.jpg';
-import Cert2 from '@/assets/images/certificates/team-2.jpg';
-import Cert3 from '@/assets/images/certificates/team-3.jpg';
-import Cert4 from '@/assets/images/certificates/team-4.jpg';
-import Cert5 from '@/assets/images/certificates/team-5.jpg';
+import Cert1 from '@/assets/images/certificates/team-1.webp';
+import Cert2 from '@/assets/images/certificates/team-2.webp';
+import Cert3 from '@/assets/images/certificates/team-3.webp';
+import Cert4 from '@/assets/images/certificates/team-4.webp';
+import Cert5 from '@/assets/images/certificates/team-5.webp';
 
-import Testi1 from '@/assets/images/testimonial/testi-1.jpg';
-import Testi2 from '@/assets/images/testimonial/testi-2.jpg';
-import Testi3 from '@/assets/images/testimonial/testi-3.jpg';
-import Testi4 from '@/assets/images/testimonial/testi-4.jpg';
-import Testi5 from '@/assets/images/testimonial/testi-5.jpg';
+import Testi1 from '@/assets/images/testimonial/testi-1.webp';
+import Testi2 from '@/assets/images/testimonial/testi-2.webp';
+import Testi3 from '@/assets/images/testimonial/testi-3.webp';
+import Testi4 from '@/assets/images/testimonial/testi-4.webp';
+import Testi5 from '@/assets/images/testimonial/testi-5.webp';
 
 export const useLanguageStore = defineStore('language', {
   state: () => ({
