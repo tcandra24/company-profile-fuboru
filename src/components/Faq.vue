@@ -68,47 +68,6 @@
     language: {
       type: String
     },
-    // queries: {
-    //   type: Object,
-    //   // default: () => {
-    //   //   return [
-    //   //     {
-    //   //       id: 1,
-    //   //       question: 'Apakah kelebihan produk fuboru dibanding merk lain ?',
-    //   //       answer: `Bahan baku Fuboru telah memenuhi standart JIS (Japanese Industrial Standards), Pengujian yang dilakukan telah mengikuti standart ASTM (American Standard for Testing Materials) dan Proses produksi mengikuti standart proses manufaktur dari Q-SEAL`,
-    //   //     },
-    //   //     {
-    //   //       id: 2,
-    //   //       question: 'Bagaimana Fuboru menjamin produk nya layak untuk digunakan ?',
-    //   //       answer: `Setiap produk tercantum Expired Date untuk memastikan bahwa produk masih baik, Terdapat Nama, Alamat, No Telpon PT Fuboru Indonesia sehingga konsumen dapat langsung menghubungi Call Center jika ingin mendapatkan informasi lebih detail tentang produk`,
-    //   //     },
-    //   //     {
-    //   //       id: 3,
-    //   //       question: 'Produk untuk apa saja yang diproduksi oleh Fuboru ?',
-    //   //       answer: `Kendaraan Roda-2 / Roda-3 mulai dari motor lama (misal : Honda C-70, Honda CB, Yamaha V-75, Yamaha L2S, Suzuki RGR 150, Vespa Super / PS/ PX, dll) hingga motor terbaru (misal : Yamaha NMAX, Honda Supra X 125 New, Honda PCX, dll), untuk Mesin Statis ( misal : Dongfeng, Kubota, Yanmar, Mitsubishi, Honda, Yamaha)`,
-    //   //     },
-    //   //     {
-    //   //       id: 4,
-    //   //       question: 'Apakah kelebihan produk LSG (Lem Special Gasket) Fuboru ?',
-    //   //       answer: `Mengandung bahan aktif Aluminium Micronized yang berfungsi untuk menutup goresan-goresan pada permukaan mesin yang dapat menyebabkan kebocoran, Saat motor di service area yang sebelumnya diberi LSG Fuboru mudah dilepas & dibersihkan, sehingga tidak perlu harus di korek / digosok yang beresiko menimbulkan goresan`,
-    //   //     },
-    //   //     {
-    //   //       id: 5,
-    //   //       question: 'Bagaimana cara mendapatkan produk Fuboru ?',
-    //   //       answer: `Produk Fuboru telah tersebar di sekitar 15.000 jaringan customer di seluruh Indonesia (baik toko maupun bengkel) dan anda dapat menghubungi call center / kantor pusat PT Fuboru Indonesia seperti yang tertera di Contact website / tertera di setiap kemasan produk Fuboru`,
-    //   //     },
-    //   //     {
-    //   //       id: 6,
-    //   //       question: 'Apakah produk Fuboru dapat dibeli secara online ?',
-    //   //       answer: [
-    //   //           'https://tokopedia.com/fundo',
-    //   //           'https://shopee.co.id/fundo_shop',
-    //   //       ],
-    //   //       link: true
-    //   //     },
-    //   //   ];
-    //   // },
-    // },
   });
   const accordians = ref(0);
 </script>
