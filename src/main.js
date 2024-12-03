@@ -1,6 +1,7 @@
 import './assets/main.css';
 
 import { createApp } from 'vue';
+import { createHead } from '@unhead/vue';
 import { createPinia } from 'pinia';
 import VueLazyLoad from 'vue3-lazyload';
 
@@ -12,10 +13,12 @@ import App from './App.vue';
 import router from './router';
 
 const app = createApp(App);
+const head = createHead();
 const pinia = createPinia();
 app.use(pinia);
 app.use(router);
 app.use(VueLazyLoad);
+app.use(head);
 
 appSetting.init();
 

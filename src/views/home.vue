@@ -50,13 +50,13 @@
               </router-link>
             </div>
             <div
-              class="top-[20px] mx-auto mt-5 mb-2 w-auto ltr:-right-[170px] rtl:-left-[150px] md:w-[540px] lg:absolute lg:mb-0 lg:mt-0 xl:w-[650px]"
+              class="top-[100px] mx-auto mt-5 mb-2 w-auto ltr:-right-[170px] rtl:-left-[150px] md:w-[540px] lg:absolute lg:mb-0 lg:mt-0 xl:w-[650px]"
               :data-aos="store.direction === 'rtl' ? 'fade-right' : 'fade-left'"
               data-aos-duration="1000"
               data-aos-offset="0"
               data-aos-delay="300"
             >
-              <img src="/assets/images/fuboru-logo-banner.webp" alt="home-banner-icon" />
+              <img src="/assets/images/logo-fuboru.webp" alt="home-banner-icon" />
             </div>
           </div>
         </div>
@@ -259,7 +259,7 @@
       </div>
     </section>
 
-    <section class="bg-gradient-to-t from-white/[55%] to-transparent py-14 dark:bg-white/[0.02] dark:from-transparent lg:py-[100px]" id="faq">
+    <section class="py-14 lg:py-[100px]" id="faq">
       <faq></faq>
     </section>
 

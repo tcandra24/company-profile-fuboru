@@ -34,13 +34,14 @@ import Ms3 from '@/assets/images/products/ms-3.webp';
 import Ms4 from '@/assets/images/products/ms-4.webp';
 import Ms5 from '@/assets/images/products/ms-5.webp';
 import Ms6 from '@/assets/images/products/ms-6.webp';
+import Ms7 from '@/assets/images/products/ms-7.webp';
+import Ms8 from '@/assets/images/products/ms-8.webp';
 
 import Var1 from '@/assets/images/products/var-1.webp';
 import Var2 from '@/assets/images/products/var-2.webp';
 import Var3 from '@/assets/images/products/var-3.webp';
-import Var4 from '@/assets/images/products/var-4.webp';
-import Var5 from '@/assets/images/products/var-5.webp';
 import Var6 from '@/assets/images/products/var-6.webp';
+import Var7 from '@/assets/images/products/var-7.webp';
 
 import Cert1 from '@/assets/images/certificates/team-1.webp';
 import Cert2 from '@/assets/images/certificates/team-2.webp';
@@ -457,21 +458,33 @@ export const useLanguageStore = defineStore('language', {
                 group: 'dieselparts',
               },
               {
-                name: 'Governor Ball Race & Ball Spacer',
+                name: 'Piston',
                 description: 'Diesel Parts',
                 image: Ms4,
                 group: 'dieselparts',
               },
               {
-                name: 'Piston',
+                name: 'Governor Ball Race',
                 description: 'Diesel Parts',
                 image: Ms5,
                 group: 'dieselparts',
               },
               {
-                name: 'Cylinder Head Gasket, Filter, Plunger',
+                name: 'Governor Ball Spacer',
                 description: 'Diesel Parts',
                 image: Ms6,
+                group: 'dieselparts',
+              },
+              {
+                name: 'Engine Valve',
+                description: 'Diesel Parts',
+                image: Ms7,
+                group: 'dieselparts',
+              },
+              {
+                name: 'Crank Pin Metal',
+                description: 'Diesel Parts',
+                image: Ms8,
                 group: 'dieselparts',
               },
             ],
@@ -499,21 +512,15 @@ export const useLanguageStore = defineStore('language', {
                 group: 'variousproducts',
               },
               {
-                name: 'Lem Epoxy',
-                description: 'Lem Epoksi',
-                image: Var4,
-                group: 'variousproducts',
-              },
-              {
-                name: 'Speed Bond',
-                description: 'Lem Cair Ekstra',
-                image: Var5,
-                group: 'variousproducts',
-              },
-              {
                 name: 'Spion',
                 description: 'Spion Motor',
                 image: Var6,
+                group: 'variousproducts',
+              },
+              {
+                name: 'Pentil Ban',
+                description: 'Pentil Ban Tubless',
+                image: Var7,
                 group: 'variousproducts',
               },
             ],
