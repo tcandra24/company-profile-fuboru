@@ -8,6 +8,8 @@ import Rubber1 from '@/assets/images/products/rubber-1.webp';
 import Rubber2 from '@/assets/images/products/rubber-2.webp';
 import Rubber3 from '@/assets/images/products/rubber-3.webp';
 import Rubber4 from '@/assets/images/products/rubber-4.webp';
+import Rubber5 from '@/assets/images/products/rubber-5.webp';
+import Rubber6 from '@/assets/images/products/rubber-6.webp';
 
 import Spare3 from '@/assets/images/products/spare-3.webp';
 import Spare4 from '@/assets/images/products/spare-4.webp';
@@ -317,6 +319,18 @@ export const useLanguageStore = defineStore('language', {
                 name: 'SKO Rubber Part',
                 description: 'O-Ring, Oil Seal, KKH',
                 image: Rubber4,
+                group: 'rubber',
+              },
+              {
+                name: 'SKO Oil Seal Set',
+                description: 'SKO Oil Seal Set',
+                image: Rubber5,
+                group: 'rubber',
+              },
+              {
+                name: 'SKO Karet Tensioner',
+                description: 'SKO Karet Tensioner',
+                image: Rubber6,
                 group: 'rubber',
               },
             ],
