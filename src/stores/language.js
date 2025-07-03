@@ -50,6 +50,7 @@ import Cert2 from '@/assets/images/certificates/team-2.webp';
 import Cert3 from '@/assets/images/certificates/team-3.webp';
 import Cert4 from '@/assets/images/certificates/team-4.webp';
 import Cert5 from '@/assets/images/certificates/team-5.webp';
+import Cert6 from '@/assets/images/certificates/team-6.webp';
 
 import Testi1 from '@/assets/images/testimonial/testi-1.webp';
 import Testi2 from '@/assets/images/testimonial/testi-2.webp';
@@ -590,6 +591,14 @@ export const useLanguageStore = defineStore('language', {
               en: 'Patent Amerika For Brake System Product',
             },
             image: Cert5,
+          },
+          {
+            name: 'ISO 9001-2015',
+            description: {
+              id: 'Pembuatan Gasket dan Produk Seal Berbasis Karet',
+              en: 'Manufacture of Gasket & Rubber Based Seal Products',
+            },
+            image: Cert6,
           },
         ],
       },

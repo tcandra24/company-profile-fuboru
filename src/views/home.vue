@@ -50,7 +50,7 @@
               </router-link>
             </div>
             <div
-              class="top-[100px] mx-auto mt-5 mb-2 w-auto ltr:-right-[170px] rtl:-left-[150px] md:w-[540px] lg:absolute lg:mb-0 lg:mt-0 xl:w-[650px]"
+              class="top-[100px] mx-auto mt-5 mb-2 w-auto ltr:-right-[170px] rtl:-left-[150px] md:w-[540px] lg:absolute lg:mb-0 lg:mt-0 xl:w-[550px]"
               :data-aos="store.direction === 'rtl' ? 'fade-right' : 'fade-left'"
               data-aos-duration="1000"
               data-aos-offset="0"
@@ -241,7 +241,7 @@
           <h4>{{ storeLanguage.section.quality.title[storeLanguage.selected] }}</h4>
           <h6>{{ storeLanguage.section.quality.subtitle[storeLanguage.selected] }}</h6>
         </div>
-        <div class="grid gap-8 sm:grid-cols-3 lg:grid-cols-5" data-aos="fade-up" data-aos-duration="1000">
+        <div class="grid gap-8 sm:grid-cols-3 lg:grid-cols-4" data-aos="fade-up" data-aos-duration="1000">
           <div class="group cursor-pointer text-center" v-for="(certificate, index) in storeLanguage.section.quality.certificates" :key="index">
             <div class="relative h-[280px] rounded-3xl transition-all duration-500 group-hover:shadow-[0_0_25px_#979797]">
               <img
