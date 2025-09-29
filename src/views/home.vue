@@ -1,31 +1,39 @@
 <script setup>
-  import { ref } from 'vue';
-  import VueEasyLightbox from 'vue-easy-lightbox';
+  import { onMounted, ref } from 'vue';
+  import { storeToRefs } from 'pinia';
 
   import ClientSlider from '@/components/ClientSlider.vue';
   import Faq from '@/components/Faq.vue';
   import Modal from '@/components/Modal.vue';
   import { useAppStore } from '@/stores/app';
   import { useLanguageStore } from '@/stores/language';
+  import { useCategoryStore } from '@/stores/categories';
+  import { useProductStore } from '@/stores/products';
+  import { useCertificateStore } from '@/stores/certificates';
+
+  import { ucwords } from '@/utils/helpers';
 
   import AboutImg from '@/assets/images/about_img.webp';
   import LoadingImg from '@/assets/images/loading_img.webp';
 
   const store = useAppStore();
   const storeLanguage = useLanguageStore();
+  const storeCategory = useCategoryStore();
+  const storeProduct = useProductStore();
+  const storeCertificate = useCertificateStore();
+
+  const { categories } = storeToRefs(storeCategory);
+  const { products } = storeToRefs(storeProduct);
+  const { certificates, fields } = storeToRefs(storeCertificate);
 
   const activeTab = ref('all');
   const dialog = ref(null);
 
-  const visible = ref(false);
-  const indexImg = ref(null);
-  const product_images = ref(
-    storeLanguage.productItem.map((element) => {
-      return {
-        src: element.image,
-      };
-    }),
-  );
+  onMounted(() => {
+    storeCategory.fetchCategories();
+    storeProduct.fetchProducts();
+    storeCertificate.fetchCertificates();
+  });
 </script>
 
 <template>
@@ -188,52 +196,40 @@
             <li class="filter" :class="{ active: activeTab === 'all' }">
               <button type="button" class="transition hover:text-secondary" @click="activeTab = 'all'">All</button>
             </li>
-            <li class="filter" v-for="(product, index) in storeLanguage.section.products.data" :key="index" :class="{ active: activeTab === product.slug }">
-              <button type="button" class="transition hover:text-secondary" @click="activeTab = product.slug">{{ product.group }}</button>
+            <li class="filter" v-for="(category, index) in categories" :key="index" :class="{ active: activeTab === category.slug }">
+              <button type="button" class="transition hover:text-secondary" @click="activeTab = category.slug">{{ ucwords(category.name) }}</button>
             </li>
           </ul>
         </div>
         <div class="projects grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
           <div
             class="project"
-            v-for="(product, index) in storeLanguage.productItem"
+            v-for="(product, index) in products"
             :key="index"
-            :class="activeTab === 'all' || activeTab === product.group ? 'block' : 'hidden'"
+            :class="activeTab === 'all' || activeTab === product.category.slug ? 'block' : 'hidden'"
           >
             <div
-              class="relative rounded-3xl border border-transparent bg-white drop-shadow-[5px_10px_80px_rgba(119,128,161,0.15)] transition duration-500 hover:border-secondary hover:bg-secondary/20 dark:bg-gray-dark dark:drop-shadow-none"
+              class="cursor-pointer relative rounded-3xl border border-transparent bg-white drop-shadow-[5px_10px_80px_rgba(119,128,161,0.15)] transition duration-500 hover:border-secondary hover:bg-secondary/20 dark:bg-gray-dark dark:drop-shadow-none"
             >
-              <a
-                href="javascript:"
-                data-fancybox="gallery"
-                @click="
-                  visible = true;
-                  indexImg = index;
-                "
-                class="absolute top-0 left-0 h-full w-full"
-              ></a>
-              <img v-lazy="{ src: product.image, loading: LoadingImg, error: LoadingImg }" :alt="product.name" class="h-52 w-full rounded-t-3xl object-cover" />
+              <router-link class="absolute top-0 h-full w-full ltr:left-0 rtl:right-0" :to="{ name: 'product.show', params: { slug: product.slug } }" />
+              <img
+                v-lazy="{
+                  src: `https://wzsfgaratnngbewlvmqf.supabase.co/storage/v1/object/public/product-bucket/${product.image}`,
+                  loading: LoadingImg,
+                  error: LoadingImg,
+                }"
+                :alt="product.name"
+                class="h-52 w-full rounded-t-3xl object-cover"
+              />
               <div class="p-5 text-sm font-bold">
-                <h6 class="mb-1 text-black dark:text-white">{{ product.name }}</h6>
-                <p>{{ product.description }}</p>
+                <h6 class="mb-1 text-black dark:text-white">{{ ucwords(product.name) }}</h6>
+                <p>{{ ucwords(product.description) }}</p>
               </div>
             </div>
           </div>
         </div>
       </div>
     </section>
-
-    <vue-easy-lightbox
-      :visible="visible"
-      :imgs="product_images"
-      :index="indexImg"
-      moveDisabled
-      loop
-      @hide="
-        indexImg = null;
-        visible = false;
-      "
-    ></vue-easy-lightbox>
 
     <section class="bg-gradient-to-b from-white/60 to-transparent py-10 dark:from-white/[0.02] lg:py-[100px]" id="jaminan-kualitas">
       <div class="container">
@@ -242,10 +238,14 @@
           <h6>{{ storeLanguage.section.quality.subtitle[storeLanguage.selected] }}</h6>
         </div>
         <div class="grid gap-8 sm:grid-cols-3 lg:grid-cols-4" data-aos="fade-up" data-aos-duration="1000">
-          <div class="group cursor-pointer text-center" v-for="(certificate, index) in storeLanguage.section.quality.certificates" :key="index">
+          <div class="group cursor-pointer text-center" v-for="(certificate, index) in certificates" :key="index">
             <div class="relative h-[280px] rounded-3xl transition-all duration-500 group-hover:shadow-[0_0_25px_#979797]">
               <img
-                v-lazy="{ src: certificate.image, loading: LoadingImg, error: LoadingImg }"
+                v-lazy="{
+                  src: `https://wzsfgaratnngbewlvmqf.supabase.co/storage/v1/object/public/certificate-bucket/${certificate.image}`,
+                  loading: LoadingImg,
+                  error: LoadingImg,
+                }"
                 :alt="certificate.name"
                 class="h-full w-full rounded-3xl object-cover object-top"
               />
@@ -253,7 +253,7 @@
             <h4 class="pt-5 pb-2 text-xl font-extrabold text-black transition duration-500 group-hover:text-secondary dark:text-white">
               {{ certificate.name }}
             </h4>
-            <h6 class="text-sm font-bold">{{ certificate.description[storeLanguage.selected] }}</h6>
+            <h6 class="text-sm font-bold">{{ certificate[fields[storeLanguage.selected]] }}</h6>
           </div>
         </div>
       </div>

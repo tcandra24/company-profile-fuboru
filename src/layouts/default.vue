@@ -1,3 +1,27 @@
+<script setup>
+  import { ref, onMounted } from 'vue';
+  import Header from '@/components/Header.vue';
+  import Footer from '@/components/Footer.vue';
+
+  import { useAppStore } from '@/stores/app';
+  const store = useAppStore();
+
+  const showTopButton = ref(false);
+  onMounted(() => {
+    window.onscroll = () => {
+      if (document.body.scrollTop > 50 || document.documentElement.scrollTop > 50) {
+        showTopButton.value = true;
+      } else {
+        showTopButton.value = false;
+      }
+    };
+  });
+
+  const scrollToTop = () => {
+    document.body.scrollTop = 0;
+    document.documentElement.scrollTop = 0;
+  };
+</script>
 <template>
   <div
     class="flex min-h-screen flex-col bg-white bg-gradient-to-r from-[#FCF1F4] to-[#EDFBF9] font-mulish text-base font-normal text-gray antialiased dark:bg-[#101926] dark:from-transparent dark:to-transparent"
@@ -62,7 +86,7 @@
     <Header :class="{ 'sticky-header': showTopButton }" />
 
     <div class="-mt-[82px] flex-grow overflow-x-hidden lg:-mt-[106px]">
-      <router-view></router-view>
+      <router-view />
     </div>
     <Footer />
 
@@ -85,28 +109,3 @@
     </button>
   </div>
 </template>
-<script setup>
-  import { ref, onMounted } from 'vue';
-  import Header from '@/components/Header.vue';
-  import Footer from '@/components/Footer.vue';
-
-  import { useAppStore } from '@/stores/app';
-  const store = useAppStore();
-
-  const showTopButton = ref(false);
-  onMounted(() => {
-    window.onscroll = () => {
-      if (document.body.scrollTop > 50 || document.documentElement.scrollTop > 50) {
-        showTopButton.value = true;
-      } else {
-        showTopButton.value = false;
-      }
-    };
-  });
-
-  const scrollToTop = () => {
-    document.body.scrollTop = 0;
-    document.documentElement.scrollTop = 0;
-  };
-</script>
-@/stores/app

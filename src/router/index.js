@@ -5,9 +5,20 @@ import { nextTick } from 'vue';
 const routes = [
   {
     path: '/',
-    name: 'home',
-    component: () => import('../views/home.vue'),
+    component: () => import('@/layouts/default.vue'),
     meta: { title: 'PT Fuboru Indonesia - Official Website' },
+    children: [
+      {
+        path: '',
+        name: 'home',
+        component: () => import('@/views/home.vue'),
+      },
+      {
+        path: 'products/:slug',
+        name: 'product.show',
+        component: () => import('@/views/product/show.vue'),
+      },
+    ],
   },
 ];
 
