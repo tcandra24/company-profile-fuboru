@@ -16,7 +16,12 @@ export const useProductStore = defineStore('products', {
       this.products = data;
     },
     async fetchProduct(slug) {
-      const { data } = await supabase.from('products').select('*, category:category_id( name, slug )').eq('slug', slug).limit(1).single();
+      const { data } = await supabase
+        .from('products')
+        .select('*, category:category_id( name, slug ), socials(name, link, embeded_code)')
+        .eq('slug', slug)
+        .limit(1)
+        .single();
 
       this.product = data;
     },
