@@ -96,7 +96,7 @@
           />
           <div class="p-5 text-sm font-bold">
             <h6 class="mb-1 text-black line-clamp-1 dark:text-white">{{ ucwords(product.name) }}</h6>
-            <p>{{ ucwords(product.description) }}</p>
+            <p>{{ ucwords(product.category.name) }}</p>
           </div>
         </div>
       </swiper-slide>
