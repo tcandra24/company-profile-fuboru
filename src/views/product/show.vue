@@ -67,30 +67,24 @@
         <div class="py-14 md:py-20">
           <h3 class="mb-7 text-xl font-extrabold text-black dark:text-white sm:text-2xl">Penjelasan</h3>
           <p
-            class="relative font-semibold leading-[30px] before:absolute before:top-0 before:h-full before:w-1 before:rounded before:bg-primary ltr:pl-6 ltr:before:left-0 rtl:pr-6 rtl:before:right-0 md:text-lg"
+            class="detail-description relative font-semibold leading-[30px] before:absolute before:top-0 before:h-full before:w-1 before:rounded before:bg-primary ltr:pl-6 ltr:before:left-0 rtl:pr-6 rtl:before:right-0 md:text-lg"
             v-html="product?.description"
           ></p>
         </div>
-        <div class="py-7 md:py-10">
-          <h3 class="mb-7 text-xl font-extrabold text-black dark:text-white sm:text-2xl">Keunggulan</h3>
-          <ul class="list-disc space-y-4 font-semibold leading-6 ltr:ml-[18px] rtl:mr-[18px] md:text-lg ltr:md:pl-4 rtl:md:pr-4">
-            <li>Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequatur, totam.</li>
-            <li>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eligendi perspiciatis non laborum. Facere, magni odit!</li>
-            <li>Lorem, ipsum dolor.</li>
-            <li>Lorem ipsum dolor sit amet consectetur.</li>
-            <li>Lorem ipsum dolor sit.</li>
-            <li>Lorem, ipsum dolor sit amet consectetur adipisicing.</li>
-          </ul>
-        </div>
         <div v-if="product.socials && product.socials.length > 0" class="py-7 md:py-10">
           <h3 class="mb-7 text-xl font-extrabold text-black dark:text-white sm:text-2xl">Sosial Media</h3>
-          <div class="flex gap-3 flex-col sm:flex-row">
-            <div v-for="social of product.socials" class="p-2 dark:bg-gray-dark">
-              <div class="aspect-video">
-                {{ social.name }}
-                ||
-                <a :href="social.link" target="_blank">{{ social.link }}</a>
-              </div>
+          <div class="flex gap-3 w-full flex-col">
+            <div v-for="social of product.socials" class="p-2 dark:bg-gray-dark flex gap-5">
+              <img
+                v-lazy="{
+                  src: `https://wzsfgaratnngbewlvmqf.supabase.co/storage/v1/object/public/social-bucket/${social.name}.svg`,
+                  loading: LoadingImg,
+                  error: LoadingImg,
+                }"
+                :alt="social.name"
+                class="w-[20px] fill-gray"
+              />
+              <a :href="social.link" target="_blank">{{ social.link }}</a>
             </div>
           </div>
         </div>
@@ -108,3 +102,15 @@
     </section>
   </div>
 </template>
+
+<style scoped>
+  :deep(.detail-description ul) {
+    list-style-type: disc;
+    padding-left: 1.5rem;
+  }
+
+  :deep(.detail-description ol) {
+    list-style-type: decimal;
+    padding-left: 1.5rem;
+  }
+</style>
