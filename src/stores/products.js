@@ -18,7 +18,7 @@ export const useProductStore = defineStore('products', {
     async fetchProduct(slug) {
       const { data } = await supabase
         .from('products')
-        .select('*, category:category_id( name, slug ), socials(name, link, embeded_code)')
+        .select('*, category:category_id( name, slug ), socials(name, link, embeded_code), product_brands( brands ( name ), brand_types( type ) )')
         .eq('slug', slug)
         .limit(1)
         .single();

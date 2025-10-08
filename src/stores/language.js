@@ -211,6 +211,20 @@ export const useLanguageStore = defineStore('language', {
           id: 'Lebih dari 1000 item produk berkualitas untuk mendukung performance kendaraan anda',
           en: "More than 1000 quality product items to support your vehicle's performance",
         },
+        detail: {
+          description: {
+            id: 'Penjelasan',
+            en: 'Description',
+          },
+          advantage: {
+            id: 'Keunggulan',
+            en: 'Excellence',
+          },
+          compatible: {
+            id: 'Kompatibel',
+            en: 'Compatible',
+          },
+        },
       },
       quality: {
         title: {
