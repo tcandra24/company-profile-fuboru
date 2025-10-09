@@ -224,6 +224,10 @@ export const useLanguageStore = defineStore('language', {
             id: 'Kompatibel',
             en: 'Compatible',
           },
+          relatedProduct: {
+            id: 'Produk Terkait',
+            en: 'Related Product',
+          },
         },
       },
       quality: {

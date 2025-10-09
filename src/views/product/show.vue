@@ -89,16 +89,21 @@
           <h3 class="mb-7 text-xl font-extrabold text-black dark:text-white sm:text-2xl">Sosial Media</h3>
           <div class="flex gap-3 w-full flex-col">
             <div v-for="social of product.socials" class="p-2 dark:bg-gray-dark flex gap-5">
-              <img
-                v-lazy="{
-                  src: `https://wzsfgaratnngbewlvmqf.supabase.co/storage/v1/object/public/social-bucket/${social.name}.svg`,
-                  loading: LoadingImg,
-                  error: LoadingImg,
-                }"
-                :alt="social.name"
-                class="w-[20px] fill-gray"
-              />
-              <a :href="social.link" target="_blank">{{ social.link }}</a>
+              <div v-if="social.link" class="flex gap-5">
+                <img
+                  v-lazy="{
+                    src: `https://wzsfgaratnngbewlvmqf.supabase.co/storage/v1/object/public/social-bucket/${social.name}.svg`,
+                    loading: LoadingImg,
+                    error: LoadingImg,
+                  }"
+                  :alt="social.name"
+                  class="w-[20px] fill-gray"
+                />
+                <a :href="social.link" target="_blank">{{ social.link }}</a>
+              </div>
+              <div v-else class="w-full flex gap-5">
+                <div v-html="social.embeded_code"></div>
+              </div>
             </div>
           </div>
         </div>
@@ -150,7 +155,7 @@
       <project-slider :products="relatedProducts">
         <template #title>
           <div class="heading mb-0 text-center ltr:lg:text-left rtl:lg:text-right">
-            <h4>Related Projects</h4>
+            <h4>{{ storeLanguage.section.products.detail.relatedProduct[storeLanguage.selected] }}</h4>
           </div>
         </template>
       </project-slider>
