@@ -7,7 +7,7 @@ export const useCategoryStore = defineStore('categories', {
   }),
   actions: {
     async fetchCategories() {
-      const { data } = await supabase.from('categories').select('*').order('name', { ascending: true });
+      const { data } = await supabase.from('categories').select('*').order('order', { ascending: true });
 
       this.categories = data;
     },

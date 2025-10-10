@@ -26,13 +26,15 @@
   const { products } = storeToRefs(storeProduct);
   const { certificates, fields } = storeToRefs(storeCertificate);
 
-  const activeTab = ref('all');
+  const activeTab = ref('');
   const dialog = ref(null);
 
-  onMounted(() => {
-    storeCategory.fetchCategories();
-    storeProduct.fetchProducts();
-    storeCertificate.fetchCertificates();
+  onMounted(async () => {
+    await storeCategory.fetchCategories();
+    await storeProduct.fetchProducts();
+    await storeCertificate.fetchCertificates();
+
+    activeTab.value = categories.value[0].slug;
   });
 </script>
 
@@ -193,9 +195,6 @@
         </div>
         <div class="mb-7">
           <ul class="filters home-filter mt-10 flex gap-8 overflow-x-auto whitespace-nowrap pb-3 font-bold lg:mt-0 lg:gap-10">
-            <li class="filter" :class="{ active: activeTab === 'all' }">
-              <button type="button" class="transition hover:text-secondary" @click="activeTab = 'all'">All</button>
-            </li>
             <li class="filter" v-for="(category, index) in categories" :key="index" :class="{ active: activeTab === category.slug }">
               <button type="button" class="transition hover:text-secondary" @click="activeTab = category.slug">{{ ucwords(category.name) }}</button>
             </li>
