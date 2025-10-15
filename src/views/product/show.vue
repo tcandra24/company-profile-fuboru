@@ -3,8 +3,6 @@
   import { storeToRefs } from 'pinia';
   import { useRoute } from 'vue-router';
 
-  import { ucwords } from '@/utils/helpers';
-
   import ProjectSlider from '@/components/ProjectSlider.vue';
   import LoadingImg from '@/assets/images/loading_img.webp';
 
@@ -17,7 +15,7 @@
   const storeProduct = useProductStore();
   const storeLanguage = useLanguageStore();
 
-  const { relatedProducts, product } = storeToRefs(storeProduct);
+  const { relatedProducts, product, isLoading } = storeToRefs(storeProduct);
 
   onMounted(() => {
     storeProduct.fetchProduct(slug);
@@ -40,12 +38,18 @@
         <div class="container">
           <div class="items-center py-10 md:flex md:h-[400px] md:py-0">
             <div class="heading relative mb-0 md:w-[725px]">
-              <h4 class="!text-white">{{ ucwords(product?.name) }}</h4>
-              <p
-                class="relative mt-7 font-medium text-[#BBC0D0] before:absolute before:top-0 before:h-full before:w-1 before:bg-primary ltr:pl-8 ltr:before:left-0 rtl:pr-8 rtl:before:right-0"
-              >
-                {{ ucwords(product?.category?.name) }}
-              </p>
+              <div v-if="isLoading" class="p-5 flex flex-col gap-9">
+                <div class="h-3.5 bg-white/50 rounded-full w-32"></div>
+                <div class="h-2.5 bg-white/50 rounded-full max-w-[360px] mb-2.5"></div>
+              </div>
+              <div v-else>
+                <h4 class="!text-white">{{ product?.name }}</h4>
+                <p
+                  class="relative mt-7 font-medium text-[#BBC0D0] before:absolute before:top-0 before:h-full before:w-1 before:bg-primary ltr:pl-8 ltr:before:left-0 rtl:pr-8 rtl:before:right-0"
+                >
+                  {{ product?.category?.name }}
+                </p>
+              </div>
             </div>
           </div>
         </div>
@@ -54,7 +58,20 @@
 
     <section class="py-8 md:py-[100px]">
       <div class="container">
-        <div>
+        <div v-if="isLoading" class="flex items-center justify-center w-full h-48 my-16 rounded-sm">
+          <svg
+            class="w-32 h-32 bg-white/50 rounded-sm dark:bg-black/20"
+            aria-hidden="true"
+            xmlns="http://www.w3.org/2000/svg"
+            fill="currentColor"
+            viewBox="0 0 20 18"
+          >
+            <path
+              d="M18 0H2a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2Zm-5.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3Zm4.376 10.481A1 1 0 0 1 16 15H4a1 1 0 0 1-.895-1.447l3.5-7A1 1 0 0 1 7.468 6a.965.965 0 0 1 .9.5l2.775 4.757 1.546-1.887a1 1 0 0 1 1.618.1l2.541 4a1 1 0 0 1 .028 1.011Z"
+            />
+          </svg>
+        </div>
+        <div v-else>
           <img
             v-lazy="{
               src: `https://wzsfgaratnngbewlvmqf.supabase.co/storage/v1/object/public/product-bucket/${product.image}`,
@@ -71,7 +88,15 @@
           <h3 class="mb-7 text-xl font-extrabold text-black dark:text-white sm:text-2xl">
             {{ storeLanguage.section.products.detail.description[storeLanguage.selected] }}
           </h3>
+          <div v-if="isLoading" class="w-full">
+            <div class="h-2 bg-black/50 rounded-full dark:bg-white/20 mb-2.5"></div>
+            <div class="h-2 bg-black/50 rounded-full dark:bg-white/20 mb-2.5"></div>
+            <div class="h-2 bg-black/50 rounded-full dark:bg-white/20 max-w-[440px] mb-2.5"></div>
+            <div class="h-2 bg-black/50 rounded-full dark:bg-white/20 max-w-[460px] mb-2.5"></div>
+            <div class="h-2 bg-black/50 rounded-full dark:bg-white/20 max-w-[360px]"></div>
+          </div>
           <p
+            v-else
             class="detail-description relative font-semibold leading-[30px] before:absolute before:top-0 before:h-full before:w-1 before:rounded before:bg-primary ltr:pl-6 ltr:before:left-0 rtl:pr-6 rtl:before:right-0 md:text-lg"
             v-html="product?.description"
           ></p>
@@ -80,7 +105,25 @@
           <h3 class="mb-7 text-xl font-extrabold text-black dark:text-white sm:text-2xl">
             {{ storeLanguage.section.products.detail.advantage[storeLanguage.selected] }}
           </h3>
+          <div v-if="isLoading" class="w-full">
+            <div class="h-2 bg-black/50 rounded-full dark:bg-white/20 mb-2.5"></div>
+            <div class="h-2 bg-black/50 rounded-full dark:bg-white/20 mb-2.5"></div>
+            <div class="h-2 bg-black/50 rounded-full dark:bg-white/20 max-w-[440px] mb-2.5"></div>
+            <div class="h-2 bg-black/50 rounded-full dark:bg-white/20 max-w-[460px] mb-2.5"></div>
+            <div class="h-2 bg-black/50 rounded-full dark:bg-white/20 max-w-[360px] mb-2.5"></div>
+            <div class="h-2 bg-black/50 rounded-full dark:bg-white/20 mb-2.5"></div>
+            <div class="h-2 bg-black/50 rounded-full dark:bg-white/20 mb-2.5"></div>
+            <div class="h-2 bg-black/50 rounded-full dark:bg-white/20 mb-2.5"></div>
+            <div class="h-2 bg-black/50 rounded-full dark:bg-white/20 max-w-[440px] mb-2.5"></div>
+            <div class="h-2 bg-black/50 rounded-full dark:bg-white/20 max-w-[460px] mb-2.5"></div>
+            <div class="h-2 bg-black/50 rounded-full dark:bg-white/20 max-w-[360px] mb-2.5"></div>
+            <div class="h-2 bg-black/50 rounded-full dark:bg-white/20 mb-2.5"></div>
+            <div class="h-2 bg-black/50 rounded-full dark:bg-white/20 max-w-[440px] mb-2.5"></div>
+            <div class="h-2 bg-black/50 rounded-full dark:bg-white/20 max-w-[460px] mb-2.5"></div>
+            <div class="h-2 bg-black/50 rounded-full dark:bg-white/20 max-w-[360px] mb-2.5"></div>
+          </div>
           <div
+            v-else
             class="detail-advantage space-y-2 font-semibold leading-6 ltr:ml-[18px] rtl:mr-[18px] md:text-lg ltr:md:pl-4 rtl:md:pr-4"
             v-html="product?.advantage"
           ></div>
@@ -88,7 +131,14 @@
         <div v-if="product.socials && product.socials.length > 0" class="py-7 md:py-10">
           <h3 class="mb-7 text-xl font-extrabold text-black dark:text-white sm:text-2xl">Sosial Media</h3>
           <div class="flex gap-3 w-full flex-col">
-            <div v-for="social of product.socials" class="p-2 dark:bg-gray-dark flex gap-5">
+            <div v-if="isLoading" class="w-full">
+              <div class="h-2 bg-black/50 rounded-full dark:bg-white/20 mb-2.5"></div>
+              <div class="h-2 bg-black/50 rounded-full dark:bg-white/20 mb-2.5"></div>
+              <div class="h-2 bg-black/50 rounded-full dark:bg-white/20 max-w-[440px] mb-2.5"></div>
+              <div class="h-2 bg-black/50 rounded-full dark:bg-white/20 max-w-[460px] mb-2.5"></div>
+              <div class="h-2 bg-black/50 rounded-full dark:bg-white/20 max-w-[360px]"></div>
+            </div>
+            <div v-else v-for="social of product.socials" class="p-2 dark:bg-gray-dark flex gap-5">
               <div v-if="social.link" class="flex gap-5">
                 <img
                   v-lazy="{

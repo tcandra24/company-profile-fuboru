@@ -4,6 +4,7 @@ import { supabase } from '@/utils/supabase';
 export const useCertificateStore = defineStore('certificates', {
   state: () => ({
     certificates: [],
+    isLoading: false,
     fields: {
       id: 'description_id',
       en: 'description_en',
@@ -11,9 +12,11 @@ export const useCertificateStore = defineStore('certificates', {
   }),
   actions: {
     async fetchCertificates() {
+      this.isLoading = true;
       const { data } = await supabase.from('certificates').select();
 
       this.certificates = data;
+      this.isLoading = false;
     },
   },
 });

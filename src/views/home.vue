@@ -11,8 +11,6 @@
   import { useProductStore } from '@/stores/products';
   import { useCertificateStore } from '@/stores/certificates';
 
-  import { ucwords } from '@/utils/helpers';
-
   import AboutImg from '@/assets/images/about_img.webp';
   import LoadingImg from '@/assets/images/loading_img.webp';
 
@@ -22,9 +20,9 @@
   const storeProduct = useProductStore();
   const storeCertificate = useCertificateStore();
 
-  const { categories } = storeToRefs(storeCategory);
-  const { products } = storeToRefs(storeProduct);
-  const { certificates, fields } = storeToRefs(storeCertificate);
+  const { categories, isLoading: isLoadingCategory } = storeToRefs(storeCategory);
+  const { products, isLoading: isLoadingProduct } = storeToRefs(storeProduct);
+  const { certificates, fields, isLoading: isLoadingCeriticate } = storeToRefs(storeCertificate);
 
   const activeTab = ref('');
   const dialog = ref(null);
@@ -195,18 +193,39 @@
         </div>
         <div class="mb-7">
           <ul class="filters home-filter mt-10 flex gap-8 overflow-x-auto whitespace-nowrap pb-3 font-bold lg:mt-0 lg:gap-10">
-            <li class="filter" v-for="(category, index) in categories" :key="index" :class="{ active: activeTab === category.slug }">
-              <button type="button" class="transition hover:text-secondary" @click="activeTab = category.slug">{{ ucwords(category.name) }}</button>
+            <li v-if="isLoadingCategory" class="filters animate-pulse" v-for="index in 10" :key="index">
+              <div class="h-2.5 bg-black/50 rounded-full dark:bg-white/20 w-32"></div>
+            </li>
+            <li v-else class="filter" v-for="category in categories" :key="category.id" :class="{ active: activeTab === category.slug }">
+              <button type="button" class="transition hover:text-secondary" @click="activeTab = category.slug">{{ category.name }}</button>
             </li>
           </ul>
         </div>
         <div class="projects grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
-          <div
-            class="project"
-            v-for="(product, index) in products"
-            :key="index"
-            :class="activeTab === 'all' || activeTab === product.category.slug ? 'block' : 'hidden'"
-          >
+          <div v-if="isLoadingProduct" class="project block" v-for="index in 10" :key="index">
+            <div
+              class="cursor-pointer relative rounded-3xl border border-transparent bg-white drop-shadow-[5px_10px_80px_rgba(119,128,161,0.15)] transition duration-500 hover:border-secondary hover:bg-secondary/20 dark:bg-gray-dark dark:drop-shadow-none animate-pulse"
+            >
+              <div class="flex items-center justify-center w-full h-48 bg-gray-300 rounded-sm dark:bg-gray-700">
+                <svg
+                  class="w-16 h-16 text-gray-200 dark:text-gray-600"
+                  aria-hidden="true"
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="currentColor"
+                  viewBox="0 0 20 18"
+                >
+                  <path
+                    d="M18 0H2a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2Zm-5.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3Zm4.376 10.481A1 1 0 0 1 16 15H4a1 1 0 0 1-.895-1.447l3.5-7A1 1 0 0 1 7.468 6a.965.965 0 0 1 .9.5l2.775 4.757 1.546-1.887a1 1 0 0 1 1.618.1l2.541 4a1 1 0 0 1 .028 1.011Z"
+                  />
+                </svg>
+              </div>
+              <div class="p-5 flex flex-col gap-5">
+                <div class="h-2.5 bg-black/50 rounded-full dark:bg-white/20 w-32"></div>
+                <div class="h-2 bg-black/50 rounded-full dark:bg-white/20 max-w-[360px] mb-2.5"></div>
+              </div>
+            </div>
+          </div>
+          <div v-else class="project" v-for="product in products" :key="product.id" :class="activeTab === product.category.slug ? 'block' : 'hidden'">
             <div
               class="cursor-pointer relative rounded-3xl border border-transparent bg-white drop-shadow-[5px_10px_80px_rgba(119,128,161,0.15)] transition duration-500 hover:border-secondary hover:bg-secondary/20 dark:bg-gray-dark dark:drop-shadow-none"
             >
@@ -221,8 +240,8 @@
                 class="h-52 w-full rounded-t-3xl object-cover"
               />
               <div class="p-5 text-sm font-bold">
-                <h6 class="mb-1 text-black dark:text-white">{{ ucwords(product.name) }}</h6>
-                <p>{{ ucwords(product.category.name) }}</p>
+                <h6 class="mb-1 text-black dark:text-white">{{ product.name }}</h6>
+                <p>{{ product.category.name }}</p>
               </div>
             </div>
           </div>
@@ -237,7 +256,26 @@
           <h6>{{ storeLanguage.section.quality.subtitle[storeLanguage.selected] }}</h6>
         </div>
         <div class="grid gap-8 sm:grid-cols-3 lg:grid-cols-4" data-aos="fade-up" data-aos-duration="1000">
-          <div class="group cursor-pointer text-center" v-for="(certificate, index) in certificates" :key="index">
+          <div v-if="isLoadingCeriticate" class="group cursor-pointer text-center" v-for="index in 10" :key="index">
+            <div class="flex items-center justify-center w-full h-48 bg-gray-300 rounded-sm dark:bg-gray-700">
+              <svg
+                class="w-16 h-16 text-gray-200 dark:text-gray-600"
+                aria-hidden="true"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="currentColor"
+                viewBox="0 0 20 18"
+              >
+                <path
+                  d="M18 0H2a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2Zm-5.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3Zm4.376 10.481A1 1 0 0 1 16 15H4a1 1 0 0 1-.895-1.447l3.5-7A1 1 0 0 1 7.468 6a.965.965 0 0 1 .9.5l2.775 4.757 1.546-1.887a1 1 0 0 1 1.618.1l2.541 4a1 1 0 0 1 .028 1.011Z"
+                />
+              </svg>
+            </div>
+            <div class="p-5 flex flex-col gap-5">
+              <div class="h-2.5 bg-black/50 rounded-full dark:bg-white/20 w-32"></div>
+              <div class="h-2 bg-black/50 rounded-full dark:bg-white/20 max-w-[360px] mb-2.5"></div>
+            </div>
+          </div>
+          <div v-else class="group cursor-pointer text-center" v-for="certificate in certificates" :key="certificate.id">
             <div class="relative h-[280px] rounded-3xl transition-all duration-500 group-hover:shadow-[0_0_25px_#979797]">
               <img
                 v-lazy="{
